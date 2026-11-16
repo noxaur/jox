@@ -46,19 +46,6 @@
                                             <child>
                                               <object class="AdwEntryRow" id="servername_entry">
                                                 <property name="title" translatable="yes">Name</property>
-                                                <child type="suffix">
-                                                  <object class="GtkDropDown" id="server_type">
-                                                    <property name="valign">center</property>
-                                                    <property name="model">
-                                                      <object class="GtkStringList">
-                                                        <items>
-                                                          <item>Emby</item>
-                                                          <item>Jellyfin</item>
-                                                        </items>
-                                                      </object>
-                                                    </property>
-                                                  </object>
-                                                </child>
                                               </object>
                                             </child>
                                             <child>
@@ -97,6 +84,18 @@
                                                 <property name="title" translatable="yes">Password</property>
                                                 <property name="activates-default">true</property>
                                                 <signal name="entry-activated" handler="on_password_entry_activated" swapped="yes"/>
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="AdwPreferencesGroup">
+                                            <property name="title">roarr</property>
+                                            <property name="description" translatable="yes">Get missing episodes, find new titles and follow downloads through roarr. It signs in with the account above. Leave empty if you don’t use roarr.</property>
+                                            <child>
+                                              <object class="AdwEntryRow" id="roarr_entry">
+                                                <property name="title" translatable="yes">roarr Address</property>
+                                                <property name="input-purpose">url</property>
                                               </object>
                                             </child>
                                           </object>

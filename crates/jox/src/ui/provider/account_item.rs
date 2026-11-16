@@ -1,7 +1,4 @@
-use std::cell::{
-    Cell,
-    RefCell,
-};
+use std::cell::RefCell;
 
 use gtk::{
     glib,
@@ -13,7 +10,6 @@ use gtk::{
 
 use crate::client::{
     Account,
-    account::ServerType,
 };
 
 pub mod imp {
@@ -39,7 +35,7 @@ pub mod imp {
         #[property(get, set)]
         access_token: RefCell<String>,
         #[property(get, set)]
-        server_type: Cell<u32>,
+        roarr_url: RefCell<String>,
     }
 
     #[glib::derived_properties]
@@ -67,7 +63,7 @@ impl AccountItem {
         item.set_port(account.port);
         item.set_user_id(account.user_id);
         item.set_access_token(account.access_token);
-        item.set_server_type(account.server_type.unwrap_or_default().index());
+        item.set_roarr_url(account.roarr_url);
         item
     }
 
@@ -80,7 +76,7 @@ impl AccountItem {
             port: self.port(),
             user_id: self.user_id(),
             access_token: self.access_token(),
-            server_type: Some(ServerType::from_index(self.server_type())),
+            roarr_url: self.roarr_url(),
         }
     }
 }

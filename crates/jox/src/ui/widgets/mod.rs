@@ -39,6 +39,7 @@ pub mod other;
 pub mod picture_loader;
 pub mod player_toolbar;
 pub mod refresh_dialog;
+pub mod roarr;
 pub mod scale_revealer;
 pub mod search;
 pub mod server_action_row;

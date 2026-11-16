@@ -79,7 +79,9 @@ mod imp {
         #[template_child]
         pub media_viewer: TemplateChild<MediaViewer>,
         #[template_child]
-        pub servers_section: TemplateChild<adw::SidebarSection>,
+        pub roarr_section: TemplateChild<adw::SidebarSection>,
+        #[template_child]
+        pub account_menu_button: TemplateChild<gtk::MenuButton>,
         pub selection: gtk::SingleSelection,
 
         #[template_child]
@@ -94,6 +96,10 @@ mod imp {
         pub likedpage: TemplateChild<adw::Bin>,
         #[template_child]
         pub searchpage: TemplateChild<adw::Bin>,
+        #[template_child]
+        pub downloadspage: TemplateChild<adw::Bin>,
+        #[template_child]
+        pub requestspage: TemplateChild<adw::Bin>,
         #[template_child]
         pub mpv_playlist: TemplateChild<gtk::ListView>,
         #[template_child]
@@ -153,6 +159,7 @@ mod imp {
             klass.install_action("win.add-server", None, |obj, _, _| {
                 obj.new_account();
             });
+
         }
 
         fn instance_init(obj: &InitializingObject<Self>) {
@@ -214,13 +221,32 @@ mod imp {
 
             obj.bind_about_action();
 
+            // Stateful, so the account menu shows the current server as a radio.
+            use gtk::gio::prelude::ActionMapExt;
+            let switch_server = gtk::gio::SimpleAction::new_stateful(
+                "switch-server",
+                Some(glib::VariantTy::STRING),
+                &glib::Variant::from(""),
+            );
+            switch_server.connect_activate(glib::clone!(
+                #[weak]
+                obj,
+                move |_, parameter| {
+                    let Some(servername) = parameter.and_then(|p| p.str()).map(str::to_owned) else {
+                        return;
+                    };
+                    spawn(async move { obj.switch_server(&servername).await });
+                }
+            ));
+            obj.add_action(&switch_server);
+
             spawn(glib::clone!(
                 #[weak(rename_to = obj)]
                 obj,
                 async move {
                     obj.setup_rootpic();
                     obj.set_servers().await;
-                    obj.set_nav_servers();
+                    obj.update_account_menu();
                     obj.set_shortcuts();
                 },
             ));
@@ -369,6 +395,45 @@ impl Window {
         imp.last_content_list_selection.replace(Some(2));
     }
 
+    pub fn downloadspage(&self) {
+        let imp = self.imp();
+        if imp.downloadspage.child().is_none() {
+            imp.downloadspage
+                .set_child(Some(&super::roarr::downloads_page()));
+        }
+        imp.navipage.set_title(&gettext("Downloads"));
+        imp.mainview.pop_to_tag("mainpage");
+        imp.insidestack.set_visible_child_name("downloadspage");
+        imp.popbutton.set_visible(false);
+    }
+
+    pub fn requestspage(&self) {
+        let imp = self.imp();
+        if imp.requestspage.child().is_none() {
+            imp.requestspage
+                .set_child(Some(&super::roarr::requests_page()));
+        }
+        imp.navipage.set_title(&gettext("Requests"));
+        imp.mainview.pop_to_tag("mainpage");
+        imp.insidestack.set_visible_child_name("requestspage");
+        imp.popbutton.set_visible(false);
+    }
+
+    /// Downloads and Requests only exist while the server has a roarr.
+    fn update_roarr_section(&self) {
+        let imp = self.imp();
+        imp.roarr_section.remove_all();
+        // Pages belong to the previous server's roarr.
+        imp.downloadspage.set_child(None::<&gtk::Widget>);
+        imp.requestspage.set_child(None::<&gtk::Widget>);
+        if crate::client::roarr::ROARR.is_configured() {
+            imp.roarr_section
+                .append(adw::SidebarItem::new(&gettext("Downloads")));
+            imp.roarr_section
+                .append(adw::SidebarItem::new(&gettext("Requests")));
+        }
+    }
+
     #[template_callback]
     pub fn on_pop(&self) {
         let imp = self.imp();
@@ -400,11 +465,15 @@ impl Window {
         let listbox = &imp.serversbox;
         listbox.remove_all();
         let accounts = SETTINGS.accounts();
-        for account in &accounts {
-            if SETTINGS.auto_select_server()
-                && account.servername == SETTINGS.preferred_server()
-                && JELLYFIN_CLIENT.session().account.user_id.is_empty()
-            {
+        // jox lives on one server at a time: open the last one straight away and
+        // keep switching in the account menu.
+        if JELLYFIN_CLIENT.session().account.user_id.is_empty() {
+            let preferred = SETTINGS.preferred_server();
+            let account = accounts
+                .iter()
+                .find(|a| a.servername == preferred)
+                .or_else(|| accounts.first());
+            if let Some(account) = account {
                 let _ = JELLYFIN_CLIENT.init(account).await;
                 self.reset();
             }
@@ -479,7 +548,7 @@ impl Window {
                         obj,
                         async move {
                             obj.set_servers().await;
-                            obj.set_nav_servers();
+                            obj.update_account_menu();
                         }
                     ));
 
@@ -494,19 +563,59 @@ impl Window {
         }
     }
 
-    pub fn set_nav_servers(&self) {
-        let imp = self.imp();
-        imp.servers_section.remove_all();
-        let accounts = SETTINGS.accounts();
-        for account in accounts {
-            let item = adw::SidebarItem::new(&account.servername);
-            imp.servers_section.append(item);
+    /// The account row is the server switcher: every server, then the ways to
+    /// add or manage them.
+    pub fn update_account_menu(&self) {
+        let current = JELLYFIN_CLIENT.session().account.servername.clone();
+        if let Some(action) = self
+            .lookup_action("switch-server")
+            .and_downcast::<gio::SimpleAction>()
+        {
+            action.set_state(&current.to_variant());
         }
+
+        let servers = gio::Menu::new();
+        for account in SETTINGS.accounts() {
+            let item = gio::MenuItem::new(Some(&account.servername), None);
+            item.set_action_and_target_value(
+                Some("win.switch-server"),
+                Some(&account.servername.to_variant()),
+            );
+            servers.append_item(&item);
+        }
+
+        let manage = gio::Menu::new();
+        manage.append(Some(&gettext("Add Server…")), Some("win.add-server"));
+        manage.append(Some(&gettext("Manage Servers…")), Some("win.relogin"));
+
+        let settings = gio::Menu::new();
+        settings.append(Some(&gettext("Preferences")), Some("setting.account"));
+
+        let menu = gio::Menu::new();
+        menu.append_section(None, &servers);
+        menu.append_section(None, &manage);
+        menu.append_section(None, &settings);
+        self.imp().account_menu_button.set_menu_model(Some(&menu));
+    }
+
+    pub async fn switch_server(&self, servername: &str) {
+        let Some(account) = SETTINGS
+            .accounts()
+            .into_iter()
+            .find(|a| a.servername == servername)
+        else {
+            return;
+        };
+        SETTINGS.set_preferred_server(&account.servername).unwrap();
+        let _ = JELLYFIN_CLIENT.init(&account).await;
+        self.reset();
     }
 
     pub fn reset(&self) {
         self.mainpage();
         self.imp().selectlist.set_selected(0);
+        self.update_account_menu();
+        self.update_roarr_section();
 
         spawn(glib::clone!(
             #[weak(rename_to = obj)]
@@ -894,20 +1003,12 @@ impl Window {
             return;
         };
 
-        if section == *imp.servers_section {
-            let section_idx = item.section_index() as usize;
-            let accounts = SETTINGS.accounts();
-            if let Some(account) = accounts.get(section_idx).cloned() {
-                spawn(glib::clone!(
-                    #[weak(rename_to = obj)]
-                    self,
-                    async move {
-                        SETTINGS.set_preferred_server(&account.servername).unwrap();
-                        let _ = JELLYFIN_CLIENT.init(&account).await;
-                        obj.reset();
-                    }
-                ));
+        if section == *imp.roarr_section {
+            match item.section_index() {
+                0 => self.downloadspage(),
+                _ => self.requestspage(),
             }
+            imp.last_content_list_selection.replace(None);
             return;
         }
 

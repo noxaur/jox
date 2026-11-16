@@ -210,6 +210,12 @@
                                                 <property name="is-playable">True</property>
                                               </object>
                                             </child>
+                                            <child>
+                                              <object class="GtkBox" id="roarr_box">
+                                                <property name="visible">False</property>
+                                                <property name="valign">center</property>
+                                              </object>
+                                            </child>
                                           </object>
                                         </child>
                                       </object>

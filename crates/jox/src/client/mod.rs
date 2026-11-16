@@ -3,6 +3,7 @@ pub mod error;
 pub mod jellyfin_client;
 pub mod picture_source;
 pub mod proxy;
+pub mod roarr;
 pub mod runtime;
 pub mod structs;
 

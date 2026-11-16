@@ -80,6 +80,9 @@ mod imp {
 
         #[template_child]
         pub filter: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub discover_bin: TemplateChild<adw::Bin>,
+        pub discover: crate::ui::widgets::roarr::DiscoverSection,
 
         pub filter_panel: OnceCell<FilterPanelDialog>,
         pub selection: gtk::SingleSelection,
@@ -105,6 +108,7 @@ mod imp {
         fn constructed(&self) {
             let obj = self.obj();
             self.parent_constructed();
+            adw::prelude::BinExt::set_child(&*self.discover_bin, Some(&self.discover.root));
             self.searchscrolled.connect_end_edge_reached(glib::clone!(
                 #[weak]
                 obj,
@@ -228,6 +232,7 @@ impl SearchPage {
     async fn on_search_activate(&self) {
         let imp = self.imp();
 
+        imp.discover.search(&imp.searchentry.text());
         let search_results = self.get_search_results::<false>().await;
 
         if search_results.items.is_empty() {

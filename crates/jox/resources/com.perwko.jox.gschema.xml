@@ -131,10 +131,6 @@
       <default>""</default>
       <summary>Gst Music Repeat Mode</summary>
     </key>
-    <key name="is-auto-select-server" type="b">
-      <default>false</default>
-      <summary>Auto Select Last Server</summary>
-    </key>
     <key name="mpv-audio-preferred-lang" type="i">
       <default>0</default>
       <summary>Preferred audio language</summary>

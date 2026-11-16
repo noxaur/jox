@@ -71,8 +71,6 @@ mod imp {
         #[template_child]
         pub auto_skip_intro_outro_control: TemplateChild<adw::SwitchRow>,
         #[template_child]
-        pub selectlastcontrol: TemplateChild<adw::SwitchRow>,
-        #[template_child]
         pub text_display_group: TemplateChild<adw::ToggleGroup>,
         #[template_child]
         pub card_style_group: TemplateChild<adw::ToggleGroup>,
@@ -397,13 +395,6 @@ impl AccountSettings {
         renderer_action_group.add_action_entries([renderer_action]);
         self.insert_action_group("settings", Some(&renderer_action_group));
 
-        SETTINGS
-            .bind(
-                "is-auto-select-server",
-                &imp.selectlastcontrol.get(),
-                "active",
-            )
-            .build();
         SETTINGS
             .bind(
                 "use-custom-accent-color",

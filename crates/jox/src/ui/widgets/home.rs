@@ -202,7 +202,7 @@ impl HomePage {
     pub async fn setup_history(&self, enable_cache: bool, force_cache_emit: bool) {
         let hortu = self.imp().hishortu.get();
 
-        if SETTINGS.merge_resume_and_next_up() && JELLYFIN_CLIENT.is_jellyfin() {
+        if SETTINGS.merge_resume_and_next_up() {
             // if merged, next up will contain resume items, so hide history
             hortu.set_visible(false);
             return;
@@ -237,11 +237,6 @@ impl HomePage {
 
     pub async fn setup_next_up(&self, enable_cache: bool, force_cache_emit: bool) {
         let hortu = self.imp().nextuphortu.get();
-
-        if !JELLYFIN_CLIENT.is_jellyfin() {
-            hortu.set_visible(false);
-            return;
-        }
 
         if SETTINGS.merge_resume_and_next_up() {
             // if merged, next up will contain resume items, so change title to continue watching

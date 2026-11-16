@@ -112,11 +112,6 @@
               </object>
             </child>
             <child>
-              <object class="AdwSwitchRow" id="selectlastcontrol">
-                <property name="title" translatable="yes">Auto Select Last Server</property>
-              </object>
-            </child>
-            <child>
               <object class="AdwActionRow">
                 <property name="title" translatable="yes">Text Display</property>
                 <child type="suffix">

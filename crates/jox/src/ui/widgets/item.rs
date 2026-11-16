@@ -178,6 +178,8 @@ pub(crate) mod imp {
         #[template_child]
         pub actionbox: TemplateChild<ItemActionsBox>,
         #[template_child]
+        pub roarr_box: TemplateChild<gtk::Box>,
+        #[template_child]
         pub tagline: TemplateChild<gtk::Label>,
         #[template_child]
         pub toolbar: TemplateChild<gtk::Box>,
@@ -929,6 +931,7 @@ impl ItemPage {
                     self,
                     async move {
                         obj.set_logo(&item).await;
+                        super::roarr::attach_get(&obj.imp().roarr_box, &item);
                         {
                             let mut str = String::new();
                             if let Some(communityrating) = item.community_rating {

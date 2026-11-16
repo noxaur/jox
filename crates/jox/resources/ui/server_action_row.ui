@@ -9,7 +9,7 @@
     <child type="prefix">
       <object class="GtkImage" id="server_image">
         <property name="valign">center</property>
-        <property name="icon-name">emby-symbolic</property>
+        <property name="icon-name">jellyfin-symbolic</property>
         <property name="icon-size">large</property>
         <style>
           <class name="accent"/>

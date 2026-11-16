@@ -13,7 +13,6 @@ use super::utils::GlobalToast;
 use crate::{
     client::{
         Account,
-        account::ServerType,
         error::UserFacingError,
         jellyfin_client::JELLYFIN_CLIENT,
     },
@@ -73,7 +72,7 @@ pub mod imp {
         #[template_child]
         pub protocol: TemplateChild<gtk::DropDown>,
         #[template_child]
-        pub server_type: TemplateChild<gtk::DropDown>,
+        pub roarr_entry: TemplateChild<adw::EntryRow>,
 
         #[property(get, set, builder(ActionType::default()))]
         pub action_type: Cell<ActionType>,
@@ -141,6 +140,7 @@ impl AccountWindow {
         let username = imp.username_entry.text();
         let password = imp.password_entry.text();
         let port = imp.port_entry.text();
+        let roarr_url = normalize_roarr_url(&imp.roarr_entry.text());
         if server.is_empty() || username.is_empty() || port.is_empty() {
             imp.stack.toast(gettext("Fields must be filled in"));
             return;
@@ -149,14 +149,13 @@ impl AccountWindow {
         imp.stack.set_visible_child_name("loading");
 
         let server = format!("{protocol}{server}");
-        let server_type = ServerType::from_index(imp.server_type.selected());
         let account = match spawn_tokio(async move {
             let login = JELLYFIN_CLIENT
-                .login(&server, &port, server_type, &username, &password)
+                .login(&server, &port, &username, &password)
                 .await?;
             let servername = if servername.is_empty() {
                 JELLYFIN_CLIENT
-                    .get_server_info_public(&server, &port, server_type)
+                    .get_server_info_public(&server, &port)
                     .await?
                     .server_name
             } else {
@@ -171,7 +170,7 @@ impl AccountWindow {
                 port: port.to_string(),
                 user_id: login.user.id,
                 access_token: login.access_token,
-                server_type: Some(server_type),
+                roarr_url,
             })
         })
         .await
@@ -210,7 +209,7 @@ impl AccountWindow {
         let window = root.and_downcast_ref::<super::window::Window>().unwrap();
         self.toast(msg);
         window.set_servers().await;
-        window.set_nav_servers();
+        window.update_account_menu();
     }
 
     #[template_callback]
@@ -247,5 +246,15 @@ impl AccountWindow {
             self.imp().server_entry.set_text(host);
             self.imp().server_entry.set_position(-1);
         }
+    }
+}
+
+/// roarr is usually typed as a bare host, so default to https.
+fn normalize_roarr_url(text: &str) -> String {
+    let text = text.trim().trim_end_matches('/');
+    if text.is_empty() || text.contains("://") {
+        text.to_owned()
+    } else {
+        format!("https://{text}")
     }
 }

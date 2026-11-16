@@ -8,10 +8,7 @@ use std::{
 };
 
 use crate::{
-    client::account::{
-        ServerType,
-        build_url,
-    },
+    client::account::build_url,
     ui::provider::tu_item::image_type::BACKDROP,
 };
 use anyhow::{
@@ -153,9 +150,7 @@ struct NextUpDateKey {
     item_id: String,
 }
 
-fn build_headers(
-    user_id: Option<&str>, token: Option<&str>, server_type: ServerType,
-) -> Result<HeaderMap> {
+fn build_headers(user_id: Option<&str>, token: Option<&str>) -> Result<HeaderMap> {
     let mut authorization = format!(
         "Client={},Device={},DeviceId={},Version={}",
         CLIENT_ID,
@@ -166,35 +161,15 @@ fn build_headers(
     if let Some(user_id) = user_id {
         authorization.push_str(&format!(",UserId={}", user_id));
     }
+    if let Some(token) = token {
+        authorization.push_str(&format!(",Token={token}"));
+    }
     let mut headers = HeaderMap::new();
-    match server_type {
-        ServerType::Emby => {
-            headers.insert(
-                "X-Emby-authorization",
-                HeaderValue::from_str(&format!("Emby {authorization}"))?,
-            );
-            if let Some(token) = token {
-                headers.insert("X-Emby-Token", HeaderValue::from_str(token)?);
-            }
-        }
-        ServerType::Jellyfin => {
-            if let Some(token) = token {
-                authorization.push_str(&format!(",Token={token}"));
-            }
-            headers.insert(
-                "Authorization",
-                HeaderValue::from_str(&format!("MediaBrowser {authorization}"))?,
-            );
-        }
-    }
+    headers.insert(
+        "Authorization",
+        HeaderValue::from_str(&format!("MediaBrowser {authorization}"))?,
+    );
     Ok(headers)
-}
-
-fn build_base_url(url: Url, server_type: ServerType) -> Result<Url> {
-    match server_type {
-        ServerType::Emby => Ok(url.join("emby/")?),
-        ServerType::Jellyfin => Ok(url),
-    }
 }
 
 fn generate_hash(s: &str) -> String {
@@ -223,28 +198,16 @@ impl JellyfinClient {
         self.session.load()
     }
 
-    fn server_type(&self) -> ServerType {
-        self.session.load().account.server_type.unwrap_or_default()
-    }
-
-    pub fn is_jellyfin(&self) -> bool {
-        matches!(self.server_type(), ServerType::Jellyfin)
-    }
-
     pub async fn init(&self, account: &Account) -> Result<(), Box<dyn std::error::Error>> {
-        let server_type = account.server_type.unwrap_or_default();
-        let headers = build_headers(
-            Some(&account.user_id),
-            Some(&account.access_token),
-            server_type,
-        )?;
-        let url = build_base_url(account.url()?, server_type)?;
+        let headers = build_headers(Some(&account.user_id), Some(&account.access_token))?;
+        let url = account.url()?;
         self.session.store(Arc::new(Session {
             account: account.clone(),
             url_headers: Some((url, headers)),
             server_name_hash: generate_hash(&account.servername),
         }));
         self.next_up_date_cache.invalidate_all();
+        super::roarr::ROARR.configure(account);
 
         crate::ui::provider::set_admin(false);
         spawn_tokio_without_await(async move {
@@ -345,13 +308,13 @@ impl JellyfinClient {
     }
 
     fn prepare_unauthenticated_request(
-        &self, method: Method, server: &str, port: &str, server_type: ServerType, path: &str,
+        &self, method: Method, server: &str, port: &str, path: &str,
     ) -> Result<RequestBuilder> {
-        let url = build_base_url(build_url(server, port)?, server_type)?.join(path)?;
+        let url = build_url(server, port)?.join(path)?;
         Ok(self
             .client
             .request(method, url)
-            .headers(build_headers(None, None, server_type)?))
+            .headers(build_headers(None, None)?))
     }
 
     fn prepare_request_headers(
@@ -387,7 +350,7 @@ impl JellyfinClient {
     }
 
     pub async fn login(
-        &self, server: &str, port: &str, server_type: ServerType, username: &str, password: &str,
+        &self, server: &str, port: &str, username: &str, password: &str,
     ) -> Result<LoginResponse> {
         let body = json!({
             "Username": username,
@@ -398,7 +361,6 @@ impl JellyfinClient {
                 Method::POST,
                 server,
                 port,
-                server_type,
                 "Users/AuthenticateByName",
             )?
             .json(&body);
@@ -425,14 +387,7 @@ impl JellyfinClient {
         if let Some(play_session_id) = play_session_id {
             query_pairs.append_pair("PlaySessionId", play_session_id);
         }
-        match self.server_type() {
-            ServerType::Emby => {
-                query_pairs.append_pair("api_key", &s.account.access_token);
-            }
-            ServerType::Jellyfin => {
-                query_pairs.append_pair("ApiKey", &s.account.access_token);
-            }
-        }
+        query_pairs.append_pair("ApiKey", &s.account.access_token);
         drop(query_pairs);
         Ok(url.to_string())
     }
@@ -541,9 +496,6 @@ impl JellyfinClient {
     }
 
     pub async fn get_next_up(&self, limit: u32, next_up_date_cutoff: &str) -> Result<List> {
-        if !self.is_jellyfin() {
-            bail!("Next up is not supported on Emby");
-        }
         let s = self.session();
         let limit = limit.to_string();
         let params = [
@@ -566,9 +518,6 @@ impl JellyfinClient {
 
     /// Get next up and resume items, merge them and sort by last played date in client side.
     pub async fn get_next_up_merged(&self, limit: u32, next_up_date_cutoff: &str) -> Result<List> {
-        if !self.is_jellyfin() {
-            bail!("Next up is not supported on Emby");
-        }
         let (resume, next_up) = tokio::try_join!(
             self.get_resume(limit),
             self.get_next_up(limit, next_up_date_cutoff)
@@ -818,9 +767,6 @@ impl JellyfinClient {
     }
 
     pub async fn get_skippable_segments(&self, id: &str) -> Result<MediaSegmentList> {
-        if !self.is_jellyfin() {
-            bail!("Skippable segments are not supported on Emby");
-        }
         let path = format!("MediaSegments/{id}");
         let params = [
             ("includeSegmentTypes", "Intro"),
@@ -1038,16 +984,8 @@ impl JellyfinClient {
 
     pub async fn unlike(&self, id: &str) -> Result<()> {
         let s = self.session();
-        match self.server_type() {
-            ServerType::Emby => {
-                let path = format!("Users/{}/FavoriteItems/{}/Delete", s.account.user_id, id);
-                self.post(&path, &[], json!({})).await?;
-            }
-            ServerType::Jellyfin => {
-                let path = format!("Users/{}/FavoriteItems/{}", s.account.user_id, id);
-                self.delete(&path, &[]).await?;
-            }
-        }
+        let path = format!("Users/{}/FavoriteItems/{}", s.account.user_id, id);
+        self.delete(&path, &[]).await?;
         Ok(())
     }
 
@@ -1067,16 +1005,8 @@ impl JellyfinClient {
         &self, id: &str, series_id: Option<T>,
     ) -> Result<()> {
         let s = self.session();
-        match self.server_type() {
-            ServerType::Emby => {
-                let path = format!("Users/{}/PlayedItems/{}/Delete", s.account.user_id, id);
-                self.post(&path, &[], json!({})).await?;
-            }
-            ServerType::Jellyfin => {
-                let path = format!("Users/{}/PlayedItems/{}", s.account.user_id, id);
-                self.delete(&path, &[]).await?;
-            }
-        }
+        let path = format!("Users/{}/PlayedItems/{}", s.account.user_id, id);
+        self.delete(&path, &[]).await?;
         if let Some(series_id) = series_id {
             self.invalidate_next_up_date(series_id.into());
         }
@@ -1266,25 +1196,9 @@ impl JellyfinClient {
         self.request(&path, &params).await
     }
 
-    pub async fn get_included(&self, id: &str) -> Result<List> {
-        if self.is_jellyfin() {
-            // TODO: Jellyfin does not support filtering by ListItemIds, return an empty list temporarily.
-            return Ok(List::default());
-        }
-        let s = self.session();
-        let path = format!("Users/{}/Items", s.account.user_id);
-        let params = [
-            (
-                "Fields",
-                "BasicSyncInfo,CanDelete,PrimaryImageAspectRatio,CommunityRating",
-            ),
-            ("Limit", "12"),
-            ("ListItemIds", id),
-            ("Recursive", "true"),
-            ("IncludeItemTypes", "Playlist,BoxSet"),
-            ("SortBy", "SortName"),
-        ];
-        self.request(&path, &params).await
+    /// Jellyfin cannot filter items by `ListItemIds`, so this stays empty for now.
+    pub async fn get_included(&self, _id: &str) -> Result<List> {
+        Ok(List::default())
     }
 
     pub async fn get_includedby(&self, parent_id: &str) -> Result<List> {
@@ -1389,15 +1303,8 @@ impl JellyfinClient {
             .append_pair("PlaySessionId", "1715006733496")
             .append_pair("StartTimeTicks", "0")
             .append_pair("EnableRedirection", "true")
-            .append_pair("EnableRemoteMedia", "false");
-        match self.server_type() {
-            ServerType::Emby => {
-                query_pairs.append_pair("api_key", &s.account.access_token);
-            }
-            ServerType::Jellyfin => {
-                query_pairs.append_pair("ApiKey", &s.account.access_token);
-            }
-        }
+            .append_pair("EnableRemoteMedia", "false")
+            .append_pair("ApiKey", &s.account.access_token);
         drop(query_pairs);
         url.to_string()
     }
@@ -1443,15 +1350,10 @@ impl JellyfinClient {
     }
 
     pub async fn get_server_info_public(
-        &self, server: &str, port: &str, server_type: ServerType,
+        &self, server: &str, port: &str,
     ) -> Result<PublicServerInfo> {
-        let request = self.prepare_unauthenticated_request(
-            Method::GET,
-            server,
-            port,
-            server_type,
-            "System/Info/Public",
-        )?;
+        let request =
+            self.prepare_unauthenticated_request(Method::GET, server, port, "System/Info/Public")?;
         Ok(self
             .send_request(request)
             .await?
@@ -1579,10 +1481,7 @@ impl JellyfinClient {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::client::{
-        account::ServerType,
-        error::UserFacingError,
-    };
+    use crate::client::error::UserFacingError;
 
     #[tokio::test]
     async fn search() {
@@ -1590,7 +1489,6 @@ mod tests {
             .login(
                 "https://example.com",
                 "443",
-                ServerType::Jellyfin,
                 "test",
                 "test",
             )
@@ -1606,7 +1504,6 @@ mod tests {
                     port: "443".to_string(),
                     user_id: response.user.id,
                     access_token: response.access_token,
-                    server_type: Some(ServerType::Jellyfin),
                 };
                 let _ = JELLYFIN_CLIENT.init(&account).await;
             }
@@ -1646,7 +1543,6 @@ mod tests {
             .login(
                 "http://127.0.0.1",
                 "8096",
-                ServerType::Jellyfin,
                 "inaha",
                 "",
             )
@@ -1662,7 +1558,6 @@ mod tests {
                     port: "8096".to_string(),
                     user_id: response.user.id,
                     access_token: response.access_token,
-                    server_type: Some(ServerType::Jellyfin),
                 };
                 let _ = JELLYFIN_CLIENT.init(&account).await;
             }

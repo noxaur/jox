@@ -28,7 +28,6 @@ impl Settings {
     const KEY_PIC_OPACITY: &'static str = "pic-opacity";
     const KEY_PIC_BLUR: &'static str = "pic-blur";
     const KEY_PREFERRED_SERVER: &'static str = "preferred-server";
-    const KEY_IS_AUTO_SELECT_SERVER: &'static str = "is-auto-select-server";
     const KEY_LIST_SORT_BY: &'static str = "list-sort-by";
     const KEY_LIST_SORT_ORDER: &'static str = "list-sort-order";
     const KEY_ACCENT_COLOR_CODE: &'static str = "accent-color-code";
@@ -541,10 +540,6 @@ impl Settings {
 
     pub fn preferred_server(&self) -> String {
         self.string(Self::KEY_PREFERRED_SERVER).to_string()
-    }
-
-    pub fn auto_select_server(&self) -> bool {
-        self.boolean(Self::KEY_IS_AUTO_SELECT_SERVER)
     }
 
     pub fn set_overlay(&self, overlay: bool) -> Result<(), glib::BoolError> {

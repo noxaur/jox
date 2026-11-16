@@ -11,26 +11,6 @@ use url::Url;
 
 use crate::ui::provider::descriptor::VecSerialize;
 
-#[derive(Serialize, Deserialize, Clone, Copy, PartialEq, Eq, Default)]
-pub enum ServerType {
-    #[default]
-    Emby = 0,
-    Jellyfin = 1,
-}
-
-impl ServerType {
-    pub fn index(self) -> u32 {
-        self as u32
-    }
-
-    pub fn from_index(index: u32) -> Self {
-        match index {
-            1 => Self::Jellyfin,
-            _ => Self::Emby,
-        }
-    }
-}
-
 #[derive(Serialize, Deserialize, Clone, PartialEq, Default)]
 pub struct Account {
     pub servername: String,
@@ -40,7 +20,9 @@ pub struct Account {
     pub port: String,
     pub user_id: String,
     pub access_token: String,
-    pub server_type: Option<ServerType>,
+    /// roarr instance that manages this server's library, if any.
+    #[serde(default)]
+    pub roarr_url: String,
 }
 
 impl Account {

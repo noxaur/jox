@@ -15,7 +15,6 @@ use super::{
 use crate::{
     client::{
         Account,
-        account::ServerType,
     },
     ui::{
         models::SETTINGS,
@@ -73,12 +72,6 @@ mod imp {
             let obj = self.obj();
             obj.set_title(&obj.item().servername());
             obj.set_subtitle(&obj.item().username());
-            if matches!(
-                ServerType::from_index(obj.item().server_type()),
-                ServerType::Jellyfin
-            ) {
-                self.server_image.set_icon_name(Some("jellyfin-symbolic"));
-            }
         }
     }
 
@@ -148,8 +141,8 @@ impl ServerActionRow {
         }
         account_window
             .imp()
-            .server_type
-            .set_selected(account.server_type.unwrap_or_default().index());
+            .roarr_entry
+            .set_text(&account.roarr_url);
         account_window.present(self.root().as_ref());
     }
 
@@ -164,6 +157,6 @@ impl ServerActionRow {
             .and_downcast_ref::<Window>()
             .expect("Failed to get Window");
         window.set_servers().await;
-        window.set_nav_servers();
+        window.update_account_menu();
     }
 }
