@@ -466,7 +466,10 @@ fn activity_row(item: &ActivityItem) -> gtk::ListBoxRow {
     text.append(&progress);
 
     let row = gtk::Box::builder().spacing(12).margin_top(10).margin_bottom(10).margin_start(12).margin_end(12).build();
-    row.append(&poster(ROARR.image_url(&item.poster), 40, 60));
+    // Items without a poster would leave an empty box pushing the text in.
+    if let Some(url) = ROARR.image_url(&item.poster) {
+        row.append(&poster(Some(url), 40, 60));
+    }
     row.append(&text);
 
     gtk::ListBoxRow::builder()
@@ -498,7 +501,7 @@ pub fn requests_page() -> gtk::Widget {
         .valign(gtk::Align::Start)
         .build();
     let empty = adw::StatusPage::builder()
-        .icon_name("mail-inbox-symbolic")
+        .icon_name("mail-send-receive-symbolic")
         .title(gettext("No Requests"))
         .css_classes(["compact"])
         .build();
@@ -555,13 +558,19 @@ fn request_row(item: &RequestItem, page: &gtk::Stack) -> gtk::ListBoxRow {
     }
     if !item.seasons.is_empty() {
         let seasons: Vec<_> = item.seasons.iter().map(|s| s.to_string()).collect();
-        details.push(gettext("Seasons {}").replace("{}", &seasons.join(", ")));
+        details.push(
+            ngettext("Season {}", "Seasons {}", seasons.len() as u32)
+                .replace("{}", &seasons.join(", ")),
+        );
     }
     details.push(request_status(item));
     text.append(&label(&details.join(" · "), &["jox-row-subtitle"]));
 
     let row = gtk::Box::builder().spacing(12).margin_top(10).margin_bottom(10).margin_start(12).margin_end(12).build();
-    row.append(&poster(ROARR.image_url(&item.poster), 40, 60));
+    // Items without a poster would leave an empty box pushing the text in.
+    if let Some(url) = ROARR.image_url(&item.poster) {
+        row.append(&poster(Some(url), 40, 60));
+    }
     row.append(&text);
 
     if item.status == "pending" {

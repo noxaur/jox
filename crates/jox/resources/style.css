@@ -590,6 +590,11 @@ checkbutton.theme-selector radio:checked {
   transition: opacity 120ms ease-out;
 }
 
+/* A faint tile holds the place of a poster that is missing or still loading. */
+.roarr-poster {
+  background-color: color-mix(in srgb, var(--catwm-ink) 6%, transparent);
+}
+
 /* Hover dims the image a touch, towards the pane behind it. No zoom, no shadow. */
 .jox-card:hover .jox-card-image picture,
 .jox-card:hover .roarr-poster {
