@@ -28,28 +28,11 @@
     </recommends>
 
     <description>
-        <p>Jox is a simple third-party Jellyfin client written in GTK4-RS, uses MPV as the video
-            player, and GStreamer as the music player.</p>
-        <p xml:lang="zh_CN">Jox 是一个使用 GTK4-RS 编写的简单第三方 Jellyfin 客户端，使用 MPV 作为视频播放器，并使用 GStreamer
-            作为音乐播放器。</p>
-        <p xml:lang="zh_TW">Jox 是一個使用 GTK4-RS 編寫的簡單第三方 Jellyfin 客戶端，使用 MPV 作為視頻播放器，並使用 GStreamer
-            作為音樂播放器。</p>
+        <p>Jox is a quiet Jellyfin client written in GTK4-RS. It plays video with mpv and music
+            with GStreamer, and keeps the screen clear while something plays.</p>
+        <p>With roarr set for a server, Jox can also get missing episodes and new titles, show
+            downloads, and answer Seerr requests.</p>
     </description>
-    <screenshots>
-        <screenshot type="default">
-            <image>
-                https://raw.githubusercontent.com/noxaur/jox/74ee1651981ee9baa523585c12302355e506ae82/docs/jox1.png</image>
-        </screenshot>
-        <screenshot>
-            <image>
-                https://raw.githubusercontent.com/noxaur/jox/74ee1651981ee9baa523585c12302355e506ae82/docs/jox2.png</image>
-        </screenshot>
-        <screenshot>
-            <image>
-                https://raw.githubusercontent.com/noxaur/jox/74ee1651981ee9baa523585c12302355e506ae82/docs/jox3.png</image>
-        </screenshot>
-    </screenshots>
-
     <!-- TODO: add branding colors -->
     <content_rating type="oars-1.1" />
     <launchable type="desktop-id">com.perwko.jox.desktop</launchable>

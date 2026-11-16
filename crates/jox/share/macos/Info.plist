@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
     <key>CFBundleName</key>
@@ -12,66 +12,27 @@
     <string>jox</string>
     <key>CFBundleIconFile</key>
     <string>AppIcon</string>
-    <key>CFBundleIconName</key>
-    <string>AppIcon</string>
-    <key>CFBundleSignature</key>
-    <string>suki</string>
-
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleVersion</key>
+    <string>@VERSION@</string>
+    <key>CFBundleShortVersionString</key>
+    <string>@VERSION@</string>
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.entertainment</string>
     <key>LSMinimumSystemVersion</key>
-    <string>12.7.3</string>
-
-    <!-- 网络权限 -->
+    <string>13.0</string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>NSSupportsAutomaticGraphicsSwitching</key>
+    <true/>
+    <!-- Jellyfin and roarr servers are often plain HTTP on a home network. -->
     <key>NSAppTransportSecurity</key>
     <dict>
         <key>NSAllowsArbitraryLoads</key>
         <true/>
     </dict>
-
-      <!-- 读写用户目录权限 -->
-    <key>NSHomeDirectory</key>
-    <string>Jox needs to store user token and cache</string>
- 
-    <!-- 访问其他应用权限 -->
-    <key>NSAppleEventsUsageDescription</key>
-    <string>Jox needs to control MPV player to play videos</string>
-
-    <key>NSServices</key>
-    <array>
-        <dict>
-            <key>NSMenuItem</key>
-            <dict>
-                <key>default</key>
-                <string>Services</string>
-            </dict>
-            <key>NSMessage</key>
-            <string>runningServiceCommand</string>
-            <key>NSRequiredContext</key>
-            <dict>
-                <key>NSApplicationActivationBundleID</key>
-                <string>io.mpv</string>
-            </dict>
-        </dict>
-    </array>
-
-    <key>CFBundleVersion</key>
-    <string>0.0.3</string>
-    <key>CFBundleShortVersionString</key>
-    <string>0.0.3</string>
-    <key>CFBundlePackageType</key>
-    <string>APPL</string>
-
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLName</key>
-            <string>jox</string>
-            <key>CFBundleTypeRole</key>
-            <string>Viewer</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>jox</string>
-            </array>
-        </dict>
-    </array>
+    <key>NSLocalNetworkUsageDescription</key>
+    <string>Jox connects to your Jellyfin and roarr servers.</string>
 </dict>
 </plist>

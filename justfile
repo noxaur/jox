@@ -24,3 +24,7 @@ run *ARGS: install
 
 update-i18n:
     meson compile -C {{ builddir }} jox-pot
+
+# Build a release Jox.app and install it, by default into /Applications (macOS).
+app *ARGS:
+    build-aux/macos/install.sh {{ ARGS }}

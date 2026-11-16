@@ -166,10 +166,13 @@
                     <property name="title">Fallback</property>
                     <property name="child">
                       <object class="AdwStatusPage" id="status">
-                        <property name="title" translatable="yes">Nothing Here or No type selected</property>
-                        <property name="description" translatable="yes">Maybe you should try using different search terms</property>
+                        <property name="title" translatable="yes">Nothing in Your Library</property>
+                        <property name="description" translatable="yes">Try other words, or check the type filter.</property>
                         <property name="vexpand">True</property>
-                        <property name="icon-name">document-open-symbolic</property>
+                        <property name="icon-name">system-search-symbolic</property>
+                        <style>
+                          <class name="compact"/>
+                        </style>
                       </object>
                     </property>
                   </object>

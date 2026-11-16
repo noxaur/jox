@@ -1165,13 +1165,13 @@ impl Window {
                 let about = adw::AboutDialog::builder()
                     .application_name("Jox")
                     .version(crate::config::version())
-                    .comments("A simple third-party Jellyfin client.")
+                    .comments(&gettext("A quiet Jellyfin client"))
                     // TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
                     .translator_credits(gettext("translator-credits"))
                     .website("https://github.com/noxaur/jox")
                     .application_icon("com.perwko.jox")
                     .license_type(gtk::License::Gpl30)
-                    .copyright("© MutsumiUniverse")
+                    .copyright("© Per William Krogstad-Østensen, based on tsukimi © MutsumiUniverse")
                     .issue_url("https://github.com/noxaur/jox/issues")
                     .build();
                 about.set_debug_info(&format!(
@@ -1186,12 +1186,10 @@ impl Window {
                     adw::micro_version(),
                     std::env::consts::OS
                 ));
-                about.add_acknowledgement_section(Some("Code"), &["Inaha", "amtoaer", "Kosette"]);
                 about.add_acknowledgement_section(
-                    Some("Special Thanks"),
-                    &["Qound", "Eikano"],
+                    Some(&gettext("tsukimi, which jox is built on")),
+                    &["Inaha https://github.com/tsukinaha/tsukimi", "amtoaer", "Kosette", "Qound", "Eikano"],
                 );
-                about.add_other_app("io.github.mutsumiuniverse.fughetta", "Fughetta", "A GTK4 frontend for MPV, embedded by wl-proxy, written in Rust.");
                 about.present(Some(window));
             })
             .build();

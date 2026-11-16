@@ -1,13 +1,14 @@
 //! One-time moves from the tsukimi era.
 //!
 //! The GSettings path is still `/moe/tsukimi/`, so dconf (Linux) keeps working
-//! as is. On macOS GLib stores settings in the NSUserDefaults domain of the
-//! executable, which was `tsukimi` and is now `jox`, so that domain is copied
-//! over once, before GSettings is first read.
+//! as is. On macOS GLib stores settings in the NSUserDefaults domain of the app:
+//! the bundle ID inside Jox.app, otherwise the executable name, which was
+//! `tsukimi` and is now `jox`. The newest older domain is copied over once,
+//! before GSettings is first read.
 
 #[cfg(target_os = "macos")]
 pub fn run() {
-    macos::copy_tsukimi_defaults();
+    macos::copy_older_defaults();
 }
 
 #[cfg(not(target_os = "macos"))]
@@ -58,7 +59,10 @@ mod macos {
         unsafe { CFStringCreateWithCString(ptr::null(), s.as_ptr(), UTF8) }
     }
 
-    pub fn copy_tsukimi_defaults() {
+    /// Domains that may hold settings from before, newest first.
+    const OLDER: [&str; 2] = ["jox", "tsukimi"];
+
+    pub fn copy_older_defaults() {
         unsafe {
             let accounts = cfstr("/moe/tsukimi/accounts");
             let existing = CFPreferencesCopyAppValue(accounts, kCFPreferencesCurrentApplication);
@@ -68,7 +72,29 @@ mod macos {
                 return;
             }
 
-            let old = cfstr("tsukimi");
+            for name in OLDER {
+                if copy_domain(name) {
+                    tracing::info!("Moved settings from {name}");
+                    return;
+                }
+            }
+        }
+    }
+
+    /// Copies a domain that has accounts into the current one.
+    unsafe fn copy_domain(name: &str) -> bool {
+        unsafe {
+            let old = cfstr(name);
+            let accounts = cfstr("/moe/tsukimi/accounts");
+            let found = CFPreferencesCopyAppValue(accounts, old);
+            CFRelease(accounts);
+            if found.is_null() {
+                CFRelease(old);
+                return false;
+            }
+            CFRelease(found);
+
+            let mut copied = false;
             let keys = CFPreferencesCopyKeyList(old, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
             if !keys.is_null() {
                 let values = CFPreferencesCopyMultiple(
@@ -87,11 +113,12 @@ mod macos {
                     );
                     CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication);
                     CFRelease(values);
-                    tracing::info!("Moved settings from tsukimi");
+                    copied = true;
                 }
                 CFRelease(keys);
             }
             CFRelease(old);
+            copied
         }
     }
 }

@@ -1,112 +1,65 @@
-# tsukimi
-A simple third-party Jellyfin client for Linux and macOS.
+# jox
 
-> We use wl-proxy for mpv gpu-next vo embedding, you can find the embedder [here](https://github.com/MutsumiUniverse/Mutsumi). We also made a local player [Fughetta](https://github.com/MutsumiUniverse/Fughetta) using this embedder.
+A quiet Jellyfin client for macOS and Linux.
 
-<p align="left">
-    <a href="https://matrix.to/#/#tsukimi:matrix.org"><img alt="Matrix" src="https://img.shields.io/badge/Matrix-%23tsukimi-7aa2f7?style=flat&logo=matrix&logoColor=white"></a>
-    <a href="https://t.me/tsukimi_frying_crab"><img alt="Telegram" src="https://img.shields.io/badge/Telegram-Group-7dcfff?style=flat&logo=telegram&logoColor=white"></a>
-    <a href="https://github.com/tsukinaha/tsukimi/wiki"><img alt="Wiki" src="https://img.shields.io/badge/GitHub-Wiki-bb9af7?style=flat&logo=github&logoColor=white"></a>
-    <a href="https://hosted.weblate.org/engage/tsukimi"><img alt="Translations" src="https://img.shields.io/badge/Weblate-Translations-9ece6a?style=flat&logo=weblate&logoColor=white"></a>
-    <a href="https://github.com/tsukinaha/tsukimi/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-GPL--3.0-f7768e?style=flat&logo=gnu&logoColor=white"></a>
-    <a href="https://flathub.org/apps/details/moe.tsuna.tsukimi"><img alt="Flathub" src="https://img.shields.io/badge/Flathub-Release-7aa2f7?style=flat&logo=flathub&logoColor=white"></a>
-</p>
+jox is built for watching. While something plays, the controls sit small at the edges with no backgrounds, and they fade away. The rest of the app follows the [CatWM](https://github.com/noxaur/CatWM) design system: a dark rail, plain media cards with the caption under the image, and a thin progress line.
 
-## Screenshots
-<div align="center">
- <img src="./docs/tsukimi1.png"/>
-</div>
-<div align="center">
- <img src="./docs/tsukimi2.png"/>
-</div>
-<div align="center">
- <img src="./docs/tsukimi3.png"/>
-</div>
+jox began as a fork of [tsukimi](https://github.com/tsukinaha/tsukimi). It talks to Jellyfin only.
 
-## Installation
+## Servers
 
-<a href="https://flathub.org/apps/details/moe.tsuna.tsukimi">
-<img
-    src="https://flathub.org/assets/badges/flathub-badge-i-en.svg"
-    alt="Download Tsukimi on Flathub"
-    width="240px"
-    height="80px"
-/>
-</a>
+jox opens the server you last used and stays on it. Use the account menu at the bottom of the rail to switch to another server, add one or manage them.
 
-### Native Packages
-[![Packaging status](https://repology.org/badge/vertical-allrepos/tsukimi.svg)](https://repology.org/project/tsukimi/versions)
+## roarr
 
-### Fedora
-```bash
-sudo dnf copr enable walker874/tsukimi
-sudo dnf install tsukimi
-```
+Give a server its [roarr](https://github.com/noxaur/roarr) address under **Manage Servers… → Edit**. jox signs in to roarr with the same username and password as Jellyfin. With roarr set, jox also gets:
 
-### Arch Linux
-```bash
-# AUR release (https://aur.archlinux.org/packages/tsukimi-bin)
-paru -S tsukimi-bin
+- **Get** on a show or movie page, to fetch missing episodes, a single season or the movie.
+- **Not in Your Library** in search, for titles you don't have yet.
+- **Downloads**, to follow what roarr is fetching until it reaches Jellyfin.
+- **Requests**, to approve, decline, or approve and get Seerr requests.
 
-# AUR latest commit (https://aur.archlinux.org/packages/tsukimi-git)
-paru -S tsukimi-git
+## Install on macOS
 
-# archlinuxcn repo https://github.com/archlinuxcn/repo/blob/master/archlinuxcn/tsukimi/PKGBUILD
-sudo pacman -Syu tsukimi
+jox uses GTK, libadwaita and mpv from Homebrew:
 
-# archlinuxcn repo https://github.com/archlinuxcn/repo/blob/master/archlinuxcn/tsukimi-git/PKGBUILD
-sudo pacman -Syu tsukimi-git
-```
-
-### AOSC OS
-```bash
-sudo oma install tsukimi
-```
-
-### Gentoo Linux
-```bash
-sudo eselect repository enable gentoo-zh
-sudo emerge --sync gentoo-zh
-sudo emerge --ask media-video/tsukimi
-```
-
-### Nix
-`tsukimi` is available in nixpkgs since 24.11.
-
-### macOS
-There is no packaged build yet; build from source with Homebrew:
 ```bash
 brew install rust meson ninja just blueprint-compiler gtk4 libadwaita mpv gstreamer webp-pixbuf-loader
+just app
+```
+
+`just app` makes a release build and installs it as `/Applications/Jox.app`. To install somewhere else, pass a path: `just app ~/Applications/Jox.app`. The app links the Homebrew libraries, so keep them installed.
+
+The first launch can take a minute while GStreamer builds its plugin registry.
+
+On macOS, mpv draws through its OpenGL render API instead of the Wayland embedder. MPRIS is not available, and animated images show only their first frame.
+
+## Build for development
+
+```bash
 just run
 ```
 
-On macOS mpv renders through its OpenGL render API instead of the Wayland
-embedder, MPRIS is unavailable, and animated images show only their first frame.
-The first launch can take a minute while GStreamer builds its plugin registry.
+This builds into `build/` and runs jox from there.
 
-## MPV Config
-[MPV-manual#files](https://mpv.io/manual/master/#files)
+Debug builds can be driven without the mouse or keyboard. Set `JOX_DEV_CONTROL` to the path of a FIFO and write lines to it, as `src/ui/widgets/dev_control.rs` describes. This is how agents test jox on a [CatWM](https://github.com/noxaur/CatWM) agent display.
 
-## Contributing
-Please follow the [contribution guide](./CONTRIBUTING.md) to learn how to
-start contributing to Tsukimi.
+## Linux
 
-## Disclaimer
-The developers of this application do not have any affiliation with the content providers available.
+The Meson build, Flatpak manifest and RPM specs from tsukimi are kept and renamed. jox has no packages yet.
+
+## mpv config
+
+jox reads your mpv config files. See the [mpv manual](https://mpv.io/manual/master/#files).
 
 ## License
-tsukimi is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) license.
 
-Thanks to open-source projects like GNOME Music, Fractal, and Clapper—we referenced a lot from them during development, and everyone who contributed code or translations!
+jox is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html), like tsukimi.
 
 ### Credits
-- [GTK4-RS](https://github.com/gtk-rs/gtk4-rs)
-- [MPV](https://github.com/mpv-player/mpv)
-- [Adwaita](https://gitlab.gnome.org/GNOME/libadwaita/)
-- [CatWM design system](https://github.com/noxaur/CatWM/blob/main/docs/design/design-system.md), with the Alpino and Pilcrow Rounded fonts from [Fontshare](https://www.fontshare.com) by Indian Type Foundry, used under the [ITF Free Font License](https://www.fontshare.com/terms)
 
-<sup>
-Fonts used in screenshots: <a href="https://github.com/lxgw/LxgwWenKai-Screen">LXGW WenKai Screen</a>
-<br />
-Anime in screenshots: <a href="https://goodbyelara.com/">さよならララ</a>
-</sup>
+- [tsukimi](https://github.com/tsukinaha/tsukimi) by Inaha and its contributors, which jox is built on.
+- [gtk4-rs](https://github.com/gtk-rs/gtk4-rs), [libadwaita](https://gitlab.gnome.org/GNOME/libadwaita/) and [mpv](https://github.com/mpv-player/mpv).
+- The [CatWM design system](https://github.com/noxaur/CatWM/blob/main/docs/design/design-system.md), with the Alpino and Pilcrow Rounded fonts from [Fontshare](https://www.fontshare.com) by Indian Type Foundry, used under the [ITF Free Font License](https://www.fontshare.com/terms).
+
+The developers of jox have no affiliation with any content providers.
