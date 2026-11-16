@@ -110,6 +110,8 @@ mod imp {
                 let size = shape.size();
                 let picture_loader = PictureLoader::new_for_url(&url);
                 picture_loader.set_size_request(size.0, size.1);
+                picture_loader.set_overflow(gtk::Overflow::Hidden);
+                picture_loader.add_css_class("jox-card-image");
                 self.picture_container.append(&picture_loader);
             }
             self.item.replace(item);

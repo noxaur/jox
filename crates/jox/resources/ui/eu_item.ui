@@ -1,49 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <template parent="AdwBin" class="EuListItem">
+    <style>
+      <class name="jox-card"/>
+    </style>
     <child>
       <object class="GtkBox">
         <property name="orientation">vertical</property>
-        <property name="spacing">8</property>
+        <property name="spacing">6</property>
         <property name="valign">start</property>
         <child>
           <object class="GtkBox" id="picture_container">
-            <property name="halign">center</property>
+            <property name="halign">start</property>
           </object>
         </child>
         <child>
-          <object class="GtkLabel" id="label1">
-            <property name="justify">center</property>
-            <property name="ellipsize">middle</property>
-            <attributes>
-              <attribute name="scale" value="0.9"/>
-              <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
-            </attributes>
-          </object>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label2">
-            <property name="justify">center</property>
-            <property name="ellipsize">middle</property>
-            <attributes>
-              <attribute name="scale" value="0.9"/>
-            </attributes>
-            <style>
-              <class name="dimmed"/>
-            </style>
-          </object>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label3">
-            <property name="justify">center</property>
-            <property name="ellipsize">middle</property>
-            <property name="visible">False</property>
-            <attributes>
-              <attribute name="scale" value="0.8"/>
-            </attributes>
-            <style>
-              <class name="dimmed"/>
-            </style>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="spacing">2</property>
+            <child>
+              <object class="GtkLabel" id="label1">
+                <property name="xalign">0</property>
+                <property name="single-line-mode">true</property>
+                <property name="ellipsize">end</property>
+                <property name="max-width-chars">1</property>
+                <style>
+                  <class name="jox-card-title"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label2">
+                <property name="xalign">0</property>
+                <property name="single-line-mode">true</property>
+                <property name="ellipsize">end</property>
+                <property name="max-width-chars">1</property>
+                <style>
+                  <class name="jox-card-subtitle"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label3">
+                <property name="xalign">0</property>
+                <property name="single-line-mode">true</property>
+                <property name="ellipsize">end</property>
+                <property name="max-width-chars">1</property>
+                <property name="visible">False</property>
+                <style>
+                  <class name="jox-card-subtitle"/>
+                </style>
+              </object>
+            </child>
           </object>
         </child>
       </object>

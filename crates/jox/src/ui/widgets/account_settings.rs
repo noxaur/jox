@@ -71,10 +71,6 @@ mod imp {
         #[template_child]
         pub auto_skip_intro_outro_control: TemplateChild<adw::SwitchRow>,
         #[template_child]
-        pub text_display_group: TemplateChild<adw::ToggleGroup>,
-        #[template_child]
-        pub card_style_group: TemplateChild<adw::ToggleGroup>,
-        #[template_child]
         pub custom_accent_color_control: TemplateChild<adw::SwitchRow>,
         #[template_child]
         pub backgroundblurspinrow: TemplateChild<adw::SpinRow>,
@@ -403,20 +399,6 @@ impl AccountSettings {
             )
             .build();
 
-        imp.text_display_group
-            .set_active_name(Some(SETTINGS.item_text_display().as_str()));
-        imp.card_style_group
-            .set_active_name(Some(SETTINGS.item_card_style().as_str()));
-        imp.text_display_group.connect_active_name_notify(|group| {
-            if let Some(active_name) = group.active_name() {
-                let _ = SETTINGS.set_item_text_display(&active_name);
-            }
-        });
-        imp.card_style_group.connect_active_name_notify(|group| {
-            if let Some(active_name) = group.active_name() {
-                let _ = SETTINGS.set_item_card_style(&active_name);
-            }
-        });
         SETTINGS
             .bind("use-custom-accent-color", &imp.color.get(), "sensitive")
             .build();

@@ -14,9 +14,8 @@
             <property name="spacing">8</property>
             <property name="valign">fill</property>
             <child>
-              <object class="HoverScale" id="hover_scale">
+              <object class="GtkBox">
                 <property name="valign">fill</property>
-                <property name="max-scale">1.00</property>
                 <property name="margin-start">8</property>
                 <property name="margin-top">8</property>
                 <child>
@@ -31,24 +30,14 @@
                       <object class="GtkOverlay" id="overlay">
                         <property name="overflow">hidden</property>
                     <style>
-                      <class name="cover-progress-frame"/>
+                      <class name="jox-card-image"/>
                     </style>
-                    <child type="overlay">
-                      <object class="GtkBox" id="overlay_button_box">
-                        <property name="orientation">horizontal</property>
-                        <property name="spacing">12</property>
-                        <property name="halign">end</property>
-                        <property name="valign">start</property>
-                        <property name="margin-end">8</property>
-                        <property name="margin-top">8</property>
-                      </object>
-                    </child>
                     <child type="overlay">
                       <object class="GtkProgressBar" id="progress_bar">
                         <property name="visible">false</property>
                         <property name="valign">end</property>
                         <style>
-                          <class name="accent"/>
+                          <class name="jox-progress"/>
                         </style>
                       </object>
                     </child>

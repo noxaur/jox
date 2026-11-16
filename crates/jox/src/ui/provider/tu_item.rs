@@ -86,7 +86,6 @@ use crate::{
     },
     ui::{
         GlobalToast,
-        SETTINGS,
         mpv::danmaku_search_dialog::DanmakuSearchDialog,
         provider::{
             core_song::CoreSong,
@@ -709,12 +708,12 @@ impl TuItem {
             return self.name();
         };
 
-        format!("{} - {program_name})", self.name())
+        format!("{} - {program_name}", self.name())
     }
 
     pub fn fmt_episode_detail(&self) -> String {
         format!(
-            "S{}E{}: {}",
+            "S{}E{} · {}",
             self.parent_index_number(),
             self.index_number(),
             self.name()
@@ -815,37 +814,36 @@ impl TuItem {
         }
     }
 
-    pub fn has_folder_mark(&self) -> bool {
-        matches!(self.item_type().as_str(), FOLDER)
-    }
-
-    pub fn list_item_title(&self) -> Option<String> {
-        let name = self.name();
-
-        if name.is_empty() {
+    /// Line 1 of a media card. `None` when the item has no name to show.
+    pub fn card_title(&self) -> Option<String> {
+        if self.name().is_empty() {
             return None;
         }
-
-        if SETTINGS.item_text_display() == "full" {
-            return Some(self.fmt_title());
-        }
-
-        Some(match self.item_type().as_str() {
-            TV_CHANNEL | SEASON | BOX_SET | MUSIC_ALBUM | GENRE | TAG | FOLDER | PERSON
-            | DIRECTOR | WRITER | PRODUCER | GUEST_STAR | ACTOR => name,
-            EPISODE if self.series_name().is_some() && self.is_resume() => self.fmt_subtitle(),
-            MOVIE if self.is_resume() => self.fmt_title(),
-            _ => return None,
-        })
+        let title = self.fmt_title();
+        (!title.is_empty()).then_some(title)
     }
 
-    pub fn list_item_subtitle(&self) -> Option<String> {
-        if self.name().is_empty() || SETTINGS.item_text_display() != "full" {
-            return None;
-        }
+    /// Line 2 of a media card: the detail (year, episode, artist...) followed by
+    /// what used to be a badge on the image ("3 new", "Watched").
+    pub fn card_subtitle(&self) -> Option<String> {
+        let detail = match self.item_type().as_str() {
+            MOVIE if self.production_year() == 0 => String::new(),
+            FOLDER => gettext("Folder"),
+            _ => self.fmt_subtitle(),
+        };
+        let parts = [detail, self.card_status().unwrap_or_default()]
+            .into_iter()
+            .filter(|part| !part.is_empty())
+            .collect::<Vec<_>>();
+        (!parts.is_empty()).then(|| parts.join(" · "))
+    }
 
-        let subtitle = self.fmt_subtitle();
-        (!subtitle.is_empty()).then_some(subtitle)
+    fn card_status(&self) -> Option<String> {
+        let unplayed = self.unplayed_item_count();
+        if matches!(self.item_type().as_str(), SERIES | SEASON) && unplayed > 0 {
+            return Some(gettext("{} new").replace("{}", &unplayed.to_string()));
+        }
+        self.has_played_mark().then(|| gettext("Watched"))
     }
 
     pub fn fmt_rating(&self) -> Option<String> {

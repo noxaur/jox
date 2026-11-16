@@ -252,11 +252,6 @@ button.pill.ultrasmall {
   border-radius: 15px;
 }
 
-.mask {
-  filter: blur(5px);
-  border-radius: 10px;
-}
-
 .top-control-bar {
   padding: 3px;
 }
@@ -278,10 +273,6 @@ button.pill.ultrasmall {
 .frame {
   border: 2px solid @borders;
   border-radius: 5px;
-}
-
-.coverimage {
-  border-radius: 12px;
 }
 
 .player-toolbar {
@@ -422,25 +413,6 @@ gridview > child:selected {
     box-shadow: none;
 }
 
-gridview>child box {
-  margin: 0px;
-}
-
-overlay>label {
-  background-color: @accent_bg_color;
-  border-radius: 50px;
-  margin: 3px;
-}
-
-revealer>box>box>widget {
-  background-color: rgba(1, 1, 1, 0.1);
-  border-radius: 10px;
-}
-
-revealer>box>box>widget>box {
-  margin: 10px;
-}
-
 tabbar>revealer>box {
   background-color: transparent;
 }
@@ -557,14 +529,6 @@ checkbutton.theme-selector radio:checked {
   color: rgb(125, 210, 227);
 }
 
-progressbar.accent > trough {
-  min-height: 6px;
-}
-
-progressbar.accent > trough > progress {
-  border-radius: 0;
-}
-
 .mpv-seekbar > trough {
   min-height: 3px;
   background-color: rgb(255 255 255 / 30%);
@@ -588,18 +552,6 @@ progressbar.accent > trough > progress {
   background-color: white;
 }
 
-.count {
-  background-color: rgb(101, 144, 154);
-}
-
-.rating {
-  background-color: rgb(39, 75, 132);
-}
-
-.folder {
-  background-color: rgb(36, 96, 86);
-}
-
 .volume-bar {
   padding: 10px;
   border-radius: 50px;
@@ -611,16 +563,8 @@ progressbar.accent > trough > progress {
   text-shadow: 3px 3px 5px alpha(black, 1);
 }
 
-.played-mark {
-	background-color: rgba(255, 255, 255, 0.5);
-}
-
 @media (prefers-color-scheme: dark) {
   .scroll-spinner {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .played-mark {
     background-color: rgba(0, 0, 0, 0.5);
   }
 }
@@ -631,19 +575,86 @@ progressbar.accent > trough > progress {
     border-radius: 10px;
 }
 
-.tu-list-item-cover,
-.tu-list-item-card {
-    background-color: transparent;
-    box-shadow: none;
-    border-radius: 12px;
+/* Media cards: the image, with the caption below it. Nothing is drawn on the
+ * image except the progress line along its bottom edge, and a play glyph while
+ * the pointer is over the card. */
+.jox-card-image,
+.roarr-poster {
+  border-radius: 12px;
+  border: none;
+  box-shadow: none;
 }
 
-.tu-list-item-cover.inbox {
-    box-shadow: none;
+.jox-card-image picture,
+.roarr-poster {
+  transition: opacity 120ms ease-out;
 }
 
-.cover-progress-frame {
-    border-radius: 12px;
+/* Hover dims the image a touch, towards the pane behind it. No zoom, no shadow. */
+.jox-card:hover .jox-card-image picture,
+.jox-card:hover .roarr-poster {
+  opacity: 0.88;
+}
+
+.jox-card-title {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--catwm-ink);
+}
+
+.jox-card-subtitle {
+  font-size: 12px;
+  color: var(--catwm-ink-muted);
+}
+
+.jox-card-play {
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0;
+  border-radius: 999px;
+  color: white;
+  background: none;
+  box-shadow: none;
+  -gtk-icon-size: 24px;
+  -gtk-icon-shadow: 0 0 2px rgb(0 0 0 / 60%), 0 1px 6px rgb(0 0 0 / 50%);
+  opacity: 0;
+  transition: opacity 120ms ease-out;
+}
+
+.jox-card:hover .jox-card-play,
+.jox-card-play:focus-visible {
+  opacity: 1;
+}
+
+/* A thin progress line: a faint ink track with an accent fill, no text. */
+progressbar.jox-progress > trough {
+  min-height: 3px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  box-shadow: none;
+  background-color: color-mix(in srgb, var(--catwm-ink) 20%, transparent);
+}
+
+progressbar.jox-progress > trough > progress {
+  min-height: 3px;
+  margin: 0;
+  border: none;
+  border-radius: 999px;
+  box-shadow: none;
+  background-color: var(--catwm-accent);
+}
+
+progressbar.jox-progress > text {
+  min-height: 0;
+  min-width: 0;
+  font-size: 0;
+}
+
+/* Keyboard focus stays visible on grid cards. */
+gridview > child:focus-visible {
+  outline: 2px solid var(--catwm-ink);
+  outline-offset: 2px;
 }
 
 @keyframes blink {

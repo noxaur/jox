@@ -24,7 +24,6 @@ pub fn init() {
     widgets::fixed_bin::FixedBin::ensure_type();
     widgets::lazy_diff_view::LazyDiffView::ensure_type();
     widgets::menu_info::MenuInfo::ensure_type();
-    widgets::hover_scale::HoverScale::ensure_type();
     widgets::action_row::AActionRow::ensure_type();
     widgets::filter_panel::FiltersRow::ensure_type();
     widgets::image_dialog::ImageInfoCard::ensure_type();

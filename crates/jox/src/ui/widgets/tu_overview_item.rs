@@ -97,8 +97,6 @@ pub mod imp {
         pub time_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub detail_box: TemplateChild<gtk::Box>,
-        #[template_child]
-        pub overlay_button_box: TemplateChild<gtk::Box>,
     }
 
     #[glib::object_subclass]

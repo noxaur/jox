@@ -15,7 +15,6 @@ pub mod home;
 mod hor_controls;
 pub mod horbu_scrolled;
 pub mod hortu_scrolled;
-pub mod hover_scale;
 pub mod identify;
 pub mod image_dialog;
 #[cfg(target_os = "linux")]
