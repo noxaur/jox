@@ -1,7 +1,7 @@
 [workspace]
 resolver = "3"
 members = ["crates/*"]
-default-members = ["crates/tsukimi"]
+default-members = ["crates/jox"]
 
 [workspace.package]
 edition = "2024"

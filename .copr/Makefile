@@ -1,11 +1,11 @@
-SPEC := $(if $(spec),$(spec),tsukimi.spec)
+SPEC := $(if $(spec),$(spec),jox.spec)
 
 .PHONY: srpm
 srpm:
 	dnf -y install cargo git-core python3 rpm-build rust zstd
 	name="$$(rpmspec -q --srpm --qf '%{NAME}\n' "$(SPEC)" | head -n1)"; \
-	if [ "$$name" = "tsukimi-git" ]; then \
-		version="$$(python3 -c 'import tomllib; print(tomllib.load(open("crates/tsukimi/Cargo.toml", "rb"))["package"]["version"])')"; \
+	if [ "$$name" = "jox-git" ]; then \
+		version="$$(python3 -c 'import tomllib; print(tomllib.load(open("crates/jox/Cargo.toml", "rb"))["package"]["version"])')"; \
 		git_date="$$(git log -1 --date=format:%Y%m%d --format=%cd HEAD)"; \
 		git_short="$$(git rev-parse --short=10 HEAD)"; \
 	else \
@@ -14,7 +14,7 @@ srpm:
 			version="$${tag#v}"; \
 			version="$${version%-copr}"; \
 		else \
-			version="$$(python3 -c 'import tomllib; print(tomllib.load(open("crates/tsukimi/Cargo.toml", "rb"))["package"]["version"])')"; \
+			version="$$(python3 -c 'import tomllib; print(tomllib.load(open("crates/jox/Cargo.toml", "rb"))["package"]["version"])')"; \
 		fi; \
 	fi; \
 	workdir="$$(mktemp -d)"; \
@@ -23,7 +23,7 @@ srpm:
 	cargo vendor --locked "$$workdir/vendor" > "$$workdir/.cargo/config.toml"; \
 	sed -i 's|^directory = \".*\"|directory = \"vendor\"|' "$$workdir/.cargo/config.toml"; \
 	tar --zstd -cf "$(outdir)/$$name-$$version-vendor.tar.zst" -C "$$workdir" .cargo vendor; \
-	if [ "$$name" = "tsukimi-git" ]; then \
+	if [ "$$name" = "jox-git" ]; then \
 		rpmbuild -bs "$(SPEC)" \
 			--define "version_from_git $$version" \
 			--define "git_snapshot $${git_date}git$${git_short}" \

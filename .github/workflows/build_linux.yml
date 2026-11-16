@@ -52,16 +52,16 @@ jobs:
         with:
           rustflags: ""
 
-      - name: Build tsukimi for ${{ matrix.platform }}
+      - name: Build jox for ${{ matrix.platform }}
         run: |
           meson setup build --prefix=/usr
           meson compile -C build
-          meson install -C build --destdir "$PWD/artifact/tsukimi-${{ matrix.platform }}-linux"
-          tar -czf tsukimi-${{ matrix.platform }}-linux.tar.gz -C artifact tsukimi-${{ matrix.platform }}-linux
+          meson install -C build --destdir "$PWD/artifact/jox-${{ matrix.platform }}-linux"
+          tar -czf jox-${{ matrix.platform }}-linux.tar.gz -C artifact jox-${{ matrix.platform }}-linux
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: tsukimi-${{ matrix.platform }}-linux
-          path: tsukimi-${{ matrix.platform }}-linux.tar.gz
+          name: jox-${{ matrix.platform }}-linux
+          path: jox-${{ matrix.platform }}-linux.tar.gz
           archive: false

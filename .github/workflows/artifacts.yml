@@ -32,7 +32,7 @@ jobs:
             chat-id: ${{ secrets.TELEGRAM_CHAT_ID }}
             files: artifacts/*
             body: |
-              Tsukimi CI
+              Jox CI
               Commit Message: ${{ github.event.head_commit.message}}
               Commit URL: ${{ github.event.head_commit.url }}
               Branch: ${{ github.ref }}

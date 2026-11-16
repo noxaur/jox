@@ -14,7 +14,7 @@ body:
 
         如果日志包含敏感信息，可以将日志作为附件发送至 `tkmreport@notalium.co`。
 
-        To collect a log, run `tsukimi -f /path/to/log` in your terminal.
+        To collect a log, run `jox -f /path/to/log` in your terminal.
 
   - type: checkboxes
     id: confirmations
@@ -25,7 +25,7 @@ body:
           required: true
         - label: I have obtained the complete log.
           required: true
-        - label: I have read the [Wiki](https://github.com/tsukinaha/tsukimi/wiki).
+        - label: I have read the [Wiki](https://github.com/noxaur/jox/wiki).
           required: true
 
   - type: input
@@ -63,7 +63,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: Tsukimi version
+      label: Jox version
       placeholder: e.g. 0.11.4
     validations:
       required: true

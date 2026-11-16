@@ -1,0 +1,2380 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Yurt Page <yurtpage@gmail.com>, 2025, 2026.
+# koffevar <koffevar@users.noreply.github.com>, 2025, 2026.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: https://hosted.weblate.org/projects/jox/main/\n"
+"POT-Creation-Date: 2026-09-29 10:01+0200\n"
+"PO-Revision-Date: 2026-06-02 12:24+0000\n"
+"Last-Translator: Yurt Page <yurtpage@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/jox/main/ru/"
+">\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 2026.6\n"
+
+#: crates/jox/resources/ui/account.ui:6
+#: crates/jox/resources/ui/account.ui:14
+msgid "Add a New Server"
+msgstr "Добавить новый сервер"
+
+#: crates/jox/resources/ui/account.ui:45
+msgid "Enter the server details below."
+msgstr "Введите детали сервера ниже."
+
+#: crates/jox/resources/ui/account.ui:48
+#: crates/jox/resources/ui/identify_dialog.ui:75
+#: crates/jox/resources/ui/other.ui:73
+msgid "Name"
+msgstr "Имя"
+
+#: crates/jox/resources/ui/account.ui:66
+msgid "Server Address"
+msgstr "Адрес сервера"
+
+#: crates/jox/resources/ui/account.ui:85
+msgid "Port"
+msgstr "Порт"
+
+#: crates/jox/resources/ui/account.ui:92
+msgid "Username"
+msgstr "Логин"
+
+#: crates/jox/resources/ui/account.ui:97
+msgid "Password"
+msgstr "Пароль"
+
+#: crates/jox/resources/ui/account.ui:108
+#: crates/jox/resources/ui/account_settings.ui:587
+msgid "Add"
+msgstr "Добавить"
+
+#: crates/jox/resources/ui/account_settings.ui:4
+msgid "Settings"
+msgstr "Настройки"
+
+#: crates/jox/resources/ui/account_settings.ui:12
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:228
+msgid "General"
+msgstr "Общие"
+
+#: crates/jox/resources/ui/account_settings.ui:17
+msgid "Preferred Language"
+msgstr "Предпочтительный язык"
+
+#: crates/jox/resources/ui/account_settings.ui:18
+msgid "This is globally effective"
+msgstr "Это глобальный параметр"
+
+#: crates/jox/resources/ui/account_settings.ui:21
+msgid "Preferred Audio Language"
+msgstr "Предпочтительный язык аудио"
+
+#: crates/jox/resources/ui/account_settings.ui:30
+#: crates/jox/resources/ui/account_settings.ui:56
+#: crates/jox/resources/ui/account_settings.ui:212
+msgid "Default"
+msgstr "По умолчанию"
+
+#: crates/jox/resources/ui/account_settings.ui:47
+msgid "Preferred Subtitle Language"
+msgstr "Предпочтительный язык субтитров"
+
+#: crates/jox/resources/ui/account_settings.ui:75
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:6
+#, fuzzy
+msgid "Playback"
+msgstr "Повтор воспроизведения"
+
+#: crates/jox/resources/ui/account_settings.ui:78
+msgid "Automatically Skip Intros and Outros"
+msgstr ""
+
+#: crates/jox/resources/ui/account_settings.ui:79
+#: crates/jox/resources/ui/account_settings.ui:176
+msgid "Jellyfin only"
+msgstr ""
+
+#: crates/jox/resources/ui/account_settings.ui:86
+msgid "Appearance"
+msgstr "Внешний вид"
+
+#: crates/jox/resources/ui/account_settings.ui:89
+#, fuzzy
+msgid "Use Custom Accent Color"
+msgstr "Цвет акцента"
+
+#: crates/jox/resources/ui/account_settings.ui:90
+msgid "Disable to follow the system accent color"
+msgstr ""
+
+#: crates/jox/resources/ui/account_settings.ui:95
+msgid "Accent Color"
+msgstr "Цвет акцента"
+
+#: crates/jox/resources/ui/account_settings.ui:111
+msgid "Hide Sidebar"
+msgstr "Скрыть боковую панель"
+
+#: crates/jox/resources/ui/account_settings.ui:116
+msgid "Auto Select Last Server"
+msgstr "Автовыбор последнего сервера"
+
+#: crates/jox/resources/ui/account_settings.ui:121
+msgid "Text Display"
+msgstr ""
+
+#: crates/jox/resources/ui/account_settings.ui:127
+msgid "Compact"
+msgstr ""
+
+#: crates/jox/resources/ui/account_settings.ui:133
+#: crates/jox/resources/ui/danmaku_popover.ui:202
+msgid "Full"
+msgstr ""
+
+#: crates/jox/resources/ui/account_settings.ui:143
+#, fuzzy
+msgid "Card Style"
+msgstr "Стиль рамки"
+
+#: crates/jox/resources/ui/account_settings.ui:149
+#, fuzzy
+msgid "Integrated"
+msgstr "Дата создания"
+
+#: crates/jox/resources/ui/account_settings.ui:155
+msgid "Separated"
+msgstr ""
+
+#: crates/jox/resources/ui/account_settings.ui:167
+#, fuzzy
+msgid "Home Page"
+msgstr "Домой"
+
+#: crates/jox/resources/ui/account_settings.ui:170
+msgid "Refresh when returning to home page"
+msgstr "Обновить при возвращении на домашнюю страницу"
+
+#: crates/jox/resources/ui/account_settings.ui:175
+#, fuzzy
+msgid "Merge Continue Watching and Next Up"
+msgstr "Продолжить просмотр"
+
+#: crates/jox/resources/ui/account_settings.ui:183
+msgid "Network"
+msgstr "Сеть"
+
+#: crates/jox/resources/ui/account_settings.ui:186
+msgid "Threads"
+msgstr "Потоки"
+
+#: crates/jox/resources/ui/account_settings.ui:187
+msgid "Excessive thread counts may exhaust the system's connection pool"
+msgstr "Чрезмерное количество потоков может исчерпать пул соединений системы"
+
+#: crates/jox/resources/ui/account_settings.ui:203
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:398
+msgid "Background"
+msgstr "Фон"
+
+#: crates/jox/resources/ui/account_settings.ui:235
+#: crates/jox/resources/ui/danmaku_popover.ui:126
+msgid "Opacity"
+msgstr "Непрозрачность"
+
+#: crates/jox/resources/ui/account_settings.ui:249
+msgid "Blur"
+msgstr ""
+
+#: crates/jox/resources/ui/account_settings.ui:254
+msgid "Blur Radius"
+msgstr ""
+
+#: crates/jox/resources/ui/account_settings.ui:270
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:84
+msgid "Cache"
+msgstr "Кэш"
+
+#: crates/jox/resources/ui/account_settings.ui:273
+msgid "Clear Cache"
+msgstr "Очистить кэш"
+
+#: crates/jox/resources/ui/account_settings.ui:288
+msgid "Others"
+msgstr "Другое"
+
+#: crates/jox/resources/ui/account_settings.ui:291
+#: crates/jox/resources/ui/account_settings.ui:493
+msgid "Preferred Video Version"
+msgstr "Предпочтительная версия видео"
+
+#: crates/jox/resources/ui/account_settings.ui:303
+msgid "Account"
+msgstr "Аккаунт"
+
+#: crates/jox/resources/ui/account_settings.ui:316
+#: crates/jox/resources/ui/account_settings.ui:333
+msgid "Change Password"
+msgstr "Изменить пароль"
+
+#: crates/jox/resources/ui/account_settings.ui:319
+msgid "New Password"
+msgstr "Новый пароль"
+
+#: crates/jox/resources/ui/account_settings.ui:324
+msgid "Confirm Password"
+msgstr "Подтвердите пароль"
+
+#: crates/jox/resources/ui/account_settings.ui:347
+msgid "Media"
+msgstr "Медиа"
+
+#: crates/jox/resources/ui/account_settings.ui:352
+msgid "Music Player"
+msgstr "Музыкальный проигрыватель"
+
+#: crates/jox/resources/ui/account_settings.ui:355
+#: crates/jox/resources/ui/player_toolbar.ui:223
+msgid "Repeat Mode"
+msgstr "Режим повторения"
+
+#: crates/jox/resources/ui/account_settings.ui:359
+#: crates/jox/resources/ui/player_toolbar.ui:257
+msgid "Repeat One"
+msgstr "Повторить один"
+
+#: crates/jox/resources/ui/account_settings.ui:360
+#: crates/jox/resources/ui/player_toolbar.ui:261
+msgid "Repeat All"
+msgstr "Повторить все"
+
+#: crates/jox/resources/ui/account_settings.ui:361
+#: crates/jox/resources/ui/account_settings.ui:390
+#: crates/jox/resources/ui/player_toolbar.ui:265
+msgid "None"
+msgstr "Ничего"
+
+#: crates/jox/resources/ui/account_settings.ui:371
+msgid "Video Player"
+msgstr "Видео проигрыватель"
+
+#: crates/jox/resources/ui/account_settings.ui:372
+msgid "Requires restart"
+msgstr "Требуется перезапуск"
+
+#: crates/jox/resources/ui/account_settings.ui:376
+msgid "Enable external config"
+msgstr "Включить внешнюю конфигурацию"
+
+#: crates/jox/resources/ui/account_settings.ui:381
+msgid "Config dir"
+msgstr "Директория конфигурации"
+
+#: crates/jox/resources/ui/account_settings.ui:406
+#, fuzzy
+#| msgid "Contents"
+msgid "GPU Context"
+msgstr "Содержание"
+
+#: crates/jox/resources/ui/account_settings.ui:409
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:501
+msgid "Auto"
+msgstr "Авто"
+
+#: crates/jox/resources/ui/account_settings.ui:471
+msgid "Preferred Version"
+msgstr "Предпочтительная версия"
+
+#: crates/jox/resources/ui/account_settings.ui:494
+msgid ""
+"Weight is ordered from high to low, until a specific version is matched, or "
+"the highest matching version is obtained before clearing the match list"
+msgstr ""
+
+#: crates/jox/resources/ui/account_settings.ui:509
+msgid "Descriptors"
+msgstr "Дескрипторы"
+
+#: crates/jox/resources/ui/account_settings.ui:531
+msgid "It is recommended to set no more than 3 lines"
+msgstr "Рекомендуется использовать не более 3 строк"
+
+#: crates/jox/resources/ui/account_settings.ui:551
+msgid "No Descriptors"
+msgstr "Нет дескрипторов"
+
+#: crates/jox/resources/ui/account_settings.ui:570
+msgid "Add a descriptor"
+msgstr "Добавить дексриптор"
+
+#: crates/jox/resources/ui/account_settings.ui:581
+#: crates/jox/resources/ui/account_settings.ui:691
+#: crates/jox/src/ui/widgets/identify/search_page.rs:130
+#: crates/jox/src/ui/widgets/image_dialog/search_page.rs:151
+#: crates/jox/src/ui/widgets/metadata_dialog.rs:289
+#: crates/jox/src/ui/widgets/tu_item/action.rs:499
+#: crates/jox/src/ui/widgets/tu_item/action.rs:559
+msgid "Cancel"
+msgstr "Отмена"
+
+#: crates/jox/resources/ui/account_settings.ui:612
+#: crates/jox/resources/ui/account_settings.ui:722
+msgid "This will use exact matching to obtain a list"
+msgstr ""
+
+#: crates/jox/resources/ui/account_settings.ui:615
+#: crates/jox/resources/ui/account_settings.ui:725
+msgid "Descriptor Type"
+msgstr "Тип дескриптора"
+
+#: crates/jox/resources/ui/account_settings.ui:620
+#: crates/jox/resources/ui/account_settings.ui:730
+msgid "String"
+msgstr "Строка"
+
+#: crates/jox/resources/ui/account_settings.ui:621
+#: crates/jox/resources/ui/account_settings.ui:731
+msgid "Regular Expression"
+msgstr "Регулярное выражение"
+
+#: crates/jox/resources/ui/account_settings.ui:633
+#: crates/jox/resources/ui/account_settings.ui:743
+msgid "Descriptor"
+msgstr "Дескриптор"
+
+#: crates/jox/resources/ui/account_settings.ui:638
+#: crates/jox/resources/ui/account_settings.ui:748
+msgid "Descriptor should not be too long"
+msgstr "Дескриптор не должен быть слишком длинным"
+
+#: crates/jox/resources/ui/account_settings.ui:649
+#: crates/jox/resources/ui/account_settings.ui:759
+msgid "eg. 1080p"
+msgstr "Например, 1080p"
+
+#: crates/jox/resources/ui/account_settings.ui:660
+#: crates/jox/resources/ui/account_settings.ui:770
+msgid "eg. 1080p.*WebDL"
+msgstr "Например, 1080p.*WebDL"
+
+#: crates/jox/resources/ui/account_settings.ui:680
+msgid "Edit descriptor"
+msgstr "Редактировать дескриптор"
+
+#: crates/jox/resources/ui/account_settings.ui:697
+#: crates/jox/resources/ui/image_dialog_edit_page.ui:37
+msgid "Save"
+msgstr "Сохранить"
+
+#: crates/jox/resources/ui/account_settings.ui:790
+msgid "Change folder"
+msgstr "Изменить директорию"
+
+#: crates/jox/resources/ui/account_settings.ui:792
+msgid "Select new mpv config folder"
+msgstr "Выберите новую директорию конфигурации mpv"
+
+#: crates/jox/resources/ui/album_widget.ui:94
+#: crates/jox/resources/ui/item.ui:193
+#: crates/jox/resources/ui/mpv_menu_actions.ui:27
+#: crates/jox/resources/ui/other.ui:95
+#: crates/jox/resources/ui/player_toolbar.ui:116
+#: crates/jox/src/ui/mpv/page.rs:376 crates/jox/src/ui/mpv/page.rs:378
+#: crates/jox/src/ui/widgets/item.rs:700
+msgid "Play"
+msgstr "Воспроизвести"
+
+#: crates/jox/resources/ui/danmaku_popover.ui:14
+#: crates/jox/resources/ui/danmaku_popover.ui:23
+#: crates/jox/resources/ui/mpvpage.ui:395
+#: crates/jox/src/ui/mpv/danmaku_popover.rs:41
+msgid "Danmaku"
+msgstr "Danmaku"
+
+#: crates/jox/resources/ui/danmaku_popover.ui:34
+#: crates/jox/src/ui/mpv/danmaku_popover.rs:56
+msgid "Disabled"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:75
+msgid "Search Manually"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:93
+#: crates/jox/resources/ui/danmaku_popover.ui:112
+#, fuzzy
+msgid "Danmaku Settings"
+msgstr "Расширенные настройки"
+
+#: crates/jox/resources/ui/danmaku_popover.ui:141
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:447
+msgid "Speed"
+msgstr "Скорость"
+
+#: crates/jox/resources/ui/danmaku_popover.ui:156
+#, fuzzy
+msgid "Font Size"
+msgstr "Размер шрифта"
+
+#: crates/jox/resources/ui/danmaku_popover.ui:171
+#, fuzzy
+msgid "Font Weight"
+msgstr "Размер шрифта"
+
+#: crates/jox/resources/ui/danmaku_popover.ui:176
+msgid "Thin"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:177
+msgid "Ultralight"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:178
+#, fuzzy
+msgid "Light"
+msgstr "Высота"
+
+#: crates/jox/resources/ui/danmaku_popover.ui:179
+#, fuzzy
+msgid "Semilight"
+msgstr "Высота"
+
+#: crates/jox/resources/ui/danmaku_popover.ui:180
+msgid "Book"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:181
+msgid "Normal"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:182
+#, fuzzy
+msgid "Medium"
+msgstr "Медиа"
+
+#: crates/jox/resources/ui/danmaku_popover.ui:183
+msgid "Semibold"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:184
+msgid "Bold"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:185
+msgid "Ultrabold"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:186
+msgid "Heavy"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:187
+msgid "Ultraheavy"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:195
+msgid "Danmaku Intensity"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:200
+msgid "Quarter"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:201
+msgid "Half"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:203
+msgid "Allow Overlay"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:211
+msgid "Spacing"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:212
+#, fuzzy
+msgid "N x Font Size"
+msgstr "Размер шрифта"
+
+#: crates/jox/resources/ui/danmaku_popover.ui:227
+#, fuzzy
+msgid "Stroke Size"
+msgstr "Размер рамки"
+
+#: crates/jox/resources/ui/danmaku_popover.ui:228
+#: crates/jox/resources/ui/danmaku_popover.ui:244
+msgid "px"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_popover.ui:243
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:326
+msgid "Shadow Offset"
+msgstr "Смешение тени"
+
+#: crates/jox/resources/ui/danmaku_popover.ui:263
+#: crates/jox/resources/ui/media_viewer.ui:36
+#: crates/jox/resources/ui/media_viewer.ui:38
+msgid "Back"
+msgstr "Назад"
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:7
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:15
+#, fuzzy
+msgid "Search Danmaku"
+msgstr "Danmaku"
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:32
+#: crates/jox/resources/ui/metadata_dialog.ui:91
+#: crates/jox/resources/ui/single_grid.ui:105
+#: crates/jox/src/ui/widgets/item.rs:1142
+msgid "Title"
+msgstr "Название"
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:38
+#, fuzzy
+msgid "Anime Type"
+msgstr "Типы видео"
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:42
+#, fuzzy
+msgid "TV Series"
+msgstr "Сериал"
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:43
+#, fuzzy
+msgid "TV Special"
+msgstr "Специальные"
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:44
+msgid "OVA"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:45
+#: crates/jox/resources/ui/other.ui:134
+#: crates/jox/resources/ui/search.ui:54
+msgid "Movie"
+msgstr "Фильм"
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:46
+#, fuzzy
+msgid "Music Video"
+msgstr "Видео"
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:47
+msgid "Web"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:48
+#, fuzzy
+msgid "Other"
+msgstr "Другое"
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:49
+msgid "Japanese Movie"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:50
+msgid "Japanese Drama"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:51
+msgid "TMDB TV"
+msgstr ""
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:52
+#, fuzzy
+msgid "TMDB Movie"
+msgstr "Фильм"
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:70
+#: crates/jox/resources/ui/identify_dialog.ui:95
+#: crates/jox/resources/ui/image_info_card.ui:127
+#: crates/jox/resources/ui/search.ui:23
+#: crates/jox/resources/ui/window.ui:21
+#: crates/jox/resources/ui/window.ui:261
+#: crates/jox/src/ui/widgets/window.rs:365
+msgid "Search"
+msgstr "Поиск"
+
+#: crates/jox/resources/ui/danmaku_search_dialog.ui:113
+#, fuzzy
+msgid "Episodes"
+msgstr "Эпизод"
+
+#: crates/jox/resources/ui/disc_box.ui:9
+#: crates/jox/src/ui/widgets/disc_box.rs:99
+msgid "Disc"
+msgstr "Диск"
+
+#: crates/jox/resources/ui/filter.ui:6
+#: crates/jox/resources/ui/filter.ui:21
+#: crates/jox/resources/ui/search.ui:31
+#: crates/jox/resources/ui/single_grid.ui:47
+msgid "Filter Panel"
+msgstr "Панель фильтра"
+
+#: crates/jox/resources/ui/filter.ui:42
+msgid "Filters"
+msgstr "Фильтры"
+
+#: crates/jox/resources/ui/filter.ui:45
+msgid "Playback Status"
+msgstr "Статус воспроизведения"
+
+#: crates/jox/resources/ui/filter.ui:50
+#: crates/jox/resources/ui/filter.ui:149
+msgid "Any"
+msgstr "Любой"
+
+#: crates/jox/resources/ui/filter.ui:51
+msgid "Played"
+msgstr "Воспроиведено"
+
+#: crates/jox/resources/ui/filter.ui:52
+msgid "Unplayed"
+msgstr "Не воспроизведено"
+
+#: crates/jox/resources/ui/filter.ui:53
+msgid "Continue Play"
+msgstr "Продолжить воспроизведение"
+
+#: crates/jox/resources/ui/filter.ui:78
+#: crates/jox/resources/ui/item.ui:497
+#: crates/jox/resources/ui/other.ui:174
+#: crates/jox/src/ui/widgets/list.rs:135
+msgid "Genres"
+msgstr "Жанры"
+
+#: crates/jox/resources/ui/filter.ui:85
+#: crates/jox/resources/ui/item.ui:502
+#: crates/jox/resources/ui/other.ui:169
+#: crates/jox/src/ui/widgets/list.rs:134
+msgid "Tags"
+msgstr "Теги"
+
+#: crates/jox/resources/ui/filter.ui:92
+msgid "Years"
+msgstr "Годы"
+
+#: crates/jox/resources/ui/filter.ui:99
+msgid "Official Ratings"
+msgstr "Официальные рейтинги"
+
+#: crates/jox/resources/ui/filter.ui:106
+#: crates/jox/resources/ui/item.ui:492
+#: crates/jox/resources/ui/other.ui:164
+msgid "Studios"
+msgstr "Студии"
+
+#: crates/jox/resources/ui/filter.ui:115
+msgid "Media Info"
+msgstr "Медиа инфо"
+
+#: crates/jox/resources/ui/filter.ui:118
+msgid "Containers"
+msgstr "Контейнеры"
+
+#: crates/jox/resources/ui/filter.ui:125
+msgid "Encoders"
+msgstr "Кодировщики"
+
+#: crates/jox/resources/ui/filter.ui:132
+msgid "Video Types"
+msgstr "Типы видео"
+
+#: crates/jox/resources/ui/filter.ui:139
+msgid "Resolution"
+msgstr "Разрешение"
+
+#: crates/jox/resources/ui/filter.ui:165
+msgid "Clear"
+msgstr "Очистить"
+
+#: crates/jox/resources/ui/filter.ui:179
+#: crates/jox/resources/ui/metadata_dialog.ui:231
+#: crates/jox/src/ui/widgets/metadata_dialog.rs:284
+msgid "Apply"
+msgstr "Применить"
+
+#: crates/jox/resources/ui/home.ui:16
+msgid "Library"
+msgstr "Библиотека"
+
+#. if merged, next up will contain resume items, so change title to continue watching
+#: crates/jox/resources/ui/home.ui:21
+#: crates/jox/resources/ui/item.ui:312
+#: crates/jox/src/ui/widgets/home.rs:248
+#: crates/jox/src/ui/widgets/home.rs:326
+msgid "Continue Watching"
+msgstr "Продолжить просмотр"
+
+#: crates/jox/resources/ui/home.ui:29
+#: crates/jox/src/ui/widgets/home.rs:250
+#: crates/jox/src/ui/widgets/home.rs:336
+#, fuzzy
+msgid "Next Up"
+msgstr "Следующий"
+
+#: crates/jox/resources/ui/identify_dialog.ui:6
+#: crates/jox/resources/ui/identify_dialog.ui:14
+#: crates/jox/resources/ui/identify_dialog_search_page.ui:4
+#: crates/jox/resources/ui/pop-menu.ui:57
+#: crates/jox/src/ui/widgets/identify/search_page.rs:125
+msgid "Identify"
+msgstr "Идентифицировать"
+
+#: crates/jox/resources/ui/identify_dialog.ui:57
+msgid ""
+"Enter one or more search criteria. Remove criteria to increase search "
+"results."
+msgstr ""
+"Введите один или несколько поисковых критериев. Удалите критерии для "
+"увеличения результатов поиска."
+
+#: crates/jox/resources/ui/identify_dialog.ui:61
+#: crates/jox/resources/ui/metadata_dialog.ui:81
+msgid "Path"
+msgstr "Путь"
+
+#: crates/jox/resources/ui/identify_dialog.ui:62
+#: crates/jox/resources/ui/image_dialog_search_page.ui:54
+#: crates/jox/resources/ui/item.ui:108
+#: crates/jox/resources/ui/item.ui:156
+msgid "Loading..."
+msgstr "Загрузка..."
+
+#: crates/jox/resources/ui/identify_dialog.ui:80
+msgid "Year"
+msgstr "Год"
+
+#: crates/jox/resources/ui/identify_dialog.ui:87
+msgid "External"
+msgstr "Внешние"
+
+#: crates/jox/resources/ui/image_dialog_edit_page.ui:4
+msgid "Edit Image"
+msgstr "Изменить изображение"
+
+#: crates/jox/resources/ui/image_dialog_edit_page.ui:19
+msgid "Upload Image"
+msgstr "Загрузить изображение"
+
+#: crates/jox/resources/ui/image_dialog_edit_page.ui:24
+msgid "External Url"
+msgstr "Внешняя ссылка"
+
+#: crates/jox/resources/ui/image_dialog_search_page.ui:4
+msgid "Choose Image"
+msgstr "Выберите изображение"
+
+#: crates/jox/resources/ui/image_dialog_search_page.ui:15
+msgid "Provider:"
+msgstr "Провайдер:"
+
+#: crates/jox/resources/ui/image_dialog_search_page.ui:22
+msgid "Provider"
+msgstr "Провайдер"
+
+#: crates/jox/resources/ui/image_dialog_search_page.ui:64
+msgid "All Languages"
+msgstr "Любой язык"
+
+#: crates/jox/resources/ui/image_drop_row.ui:49
+msgid "Open"
+msgstr "Открыть"
+
+#: crates/jox/resources/ui/image_drop_row.ui:109
+msgid "Pick Image"
+msgstr "Выбрать изображение"
+
+#: crates/jox/resources/ui/image_drop_row.ui:113
+#: crates/jox/resources/ui/images_dialog.ui:69
+msgid "Images"
+msgstr "Изображения"
+
+#: crates/jox/resources/ui/image_drop_row.ui:119
+msgid "Pick image to upload"
+msgstr "Выберите изображение для загрузки"
+
+#: crates/jox/resources/ui/image_info_card.ui:86
+msgid "Copy Image To Clipboard"
+msgstr "Скопировать изображение в буфер обмена"
+
+#: crates/jox/resources/ui/image_info_card.ui:98
+msgid "View Image"
+msgstr "Посмотреть изображение"
+
+#: crates/jox/resources/ui/image_info_card.ui:109
+#: crates/jox/resources/ui/image_info_card.ui:133
+#: crates/jox/resources/ui/server_action_row.ui:30
+msgid "Edit"
+msgstr "Редактировать"
+
+#: crates/jox/resources/ui/image_info_card.ui:139
+#: crates/jox/resources/ui/pop-menu.ui:93
+#: crates/jox/resources/ui/server_action_row.ui:52
+#: crates/jox/src/ui/widgets/tu_item/action.rs:500
+msgid "Delete"
+msgstr "Удалить"
+
+#: crates/jox/resources/ui/images_dialog.ui:6
+#: crates/jox/resources/ui/images_dialog.ui:36
+#: crates/jox/resources/ui/item_actions.ui:59
+#: crates/jox/resources/ui/pop-menu.ui:49
+#: crates/jox/resources/ui/song_widget.ui:161
+msgid "Edit Images"
+msgstr "Редактировать изображения"
+
+#: crates/jox/resources/ui/images_dialog.ui:59
+#: crates/jox/resources/ui/metadata_dialog.ui:70
+msgid "Not Available"
+msgstr "Не доступно"
+
+#: crates/jox/resources/ui/images_dialog.ui:60
+#: crates/jox/resources/ui/metadata_dialog.ui:71
+msgid "This page is READ-ONLY, because you have no permission to modify it."
+msgstr ""
+"Эта страница ТОЛЬКО ДЛЯ ЧТЕНИЯ, потому что у вас нет прав на ее "
+"редактирование."
+
+#: crates/jox/resources/ui/images_dialog.ui:157
+msgid "BackDrops"
+msgstr "Фоны"
+
+#: crates/jox/resources/ui/item.ui:232
+msgid "Video: "
+msgstr "Видео: "
+
+#: crates/jox/resources/ui/item.ui:252
+msgid "Subtitle: "
+msgstr "Субтитры: "
+
+#: crates/jox/resources/ui/item.ui:326
+msgid "View this season"
+msgstr "Посмотреть этот сезон"
+
+#: crates/jox/resources/ui/item.ui:435
+#: crates/jox/resources/ui/liked.ui:69
+#: crates/jox/resources/ui/single_grid.ui:164
+msgid "Nothing Here"
+msgstr "Пусто"
+
+#: crates/jox/resources/ui/item.ui:461
+msgid "Included In"
+msgstr "Включено в"
+
+#: crates/jox/resources/ui/item.ui:466
+msgid "Additional Parts"
+msgstr "Дополнительные части"
+
+#: crates/jox/resources/ui/item.ui:471
+msgid "Seasons"
+msgstr "Сезоны"
+
+#: crates/jox/resources/ui/item.ui:476
+#: crates/jox/resources/ui/other.ui:158
+msgid "Actors"
+msgstr "Актеры"
+
+#: crates/jox/resources/ui/item.ui:482
+msgid "Recommend"
+msgstr "Рекомендации"
+
+#: crates/jox/resources/ui/item.ui:487
+#: crates/jox/resources/ui/other.ui:179
+msgid "Links"
+msgstr "Ссылки"
+
+#: crates/jox/resources/ui/item.ui:520
+msgid "MediaInfo"
+msgstr "Медиаинфо"
+
+#: crates/jox/resources/ui/item_actions.ui:40
+#: crates/jox/resources/ui/pop-menu.ui:29
+msgid "Mark as Played"
+msgstr "Отметить как просмотренное"
+
+#: crates/jox/resources/ui/item_actions.ui:46
+#: crates/jox/resources/ui/pop-menu.ui:35
+msgid "Mark as Unplayed"
+msgstr "Отметить как непросмотренное"
+
+#: crates/jox/resources/ui/item_actions.ui:53
+#: crates/jox/resources/ui/metadata_dialog.ui:18
+#: crates/jox/resources/ui/metadata_dialog.ui:26
+#: crates/jox/resources/ui/pop-menu.ui:43
+#: crates/jox/resources/ui/song_widget.ui:156
+msgid "Edit Metadata"
+msgstr "Редактировать метаданные"
+
+#: crates/jox/resources/ui/liked.ui:70
+msgid "Your favorite items will be placed here"
+msgstr ""
+
+#: crates/jox/resources/ui/media_viewer.ui:6
+msgid "_Copy Image"
+msgstr "_Скопировать изображение"
+
+#: crates/jox/resources/ui/media_viewer.ui:46
+#: crates/jox/resources/ui/media_viewer.ui:48
+msgid "Media Menu"
+msgstr "Медиа-меню"
+
+#: crates/jox/resources/ui/media_viewer.ui:58
+#: crates/jox/resources/ui/media_viewer.ui:60
+#: crates/jox/resources/ui/mpvpage.ui:420
+#: crates/jox/resources/ui/mpvpage.ui:423
+#: crates/jox/resources/ui/window.ui:17
+#: crates/jox/resources/ui/window.ui:50
+msgid "Fullscreen"
+msgstr "Полноэкранный режим"
+
+#: crates/jox/resources/ui/media_viewer.ui:69
+#: crates/jox/resources/ui/media_viewer.ui:71
+#: crates/jox/resources/ui/mpvpage.ui:437
+#: crates/jox/resources/ui/mpvpage.ui:439
+msgid "Exit Fullscreen"
+msgstr "Выйти из полноэкранного режима"
+
+#: crates/jox/resources/ui/metadata_dialog.ui:82
+msgid "No data."
+msgstr "Нет данных."
+
+#: crates/jox/resources/ui/metadata_dialog.ui:96
+msgid "Sort Title"
+msgstr "Название для сортировки"
+
+#: crates/jox/resources/ui/metadata_dialog.ui:101
+#: crates/jox/resources/ui/single_grid.ui:107
+msgid "Date Created"
+msgstr "Дата создания"
+
+#: crates/jox/resources/ui/metadata_dialog.ui:107
+msgid "Pick Date"
+msgstr "Выбрать дату"
+
+#: crates/jox/resources/ui/metadata_dialog.ui:127
+msgid "Pick Time"
+msgstr "Выбрать время"
+
+#: crates/jox/resources/ui/metadata_dialog.ui:180
+msgid "Overview"
+msgstr "Обзор"
+
+#: crates/jox/resources/ui/metadata_dialog.ui:197
+msgid "External Ids"
+msgstr "Внешие Id"
+
+#: crates/jox/resources/ui/metadata_dialog.ui:203
+msgid "TheMovieDb Id"
+msgstr "TheMovieDb Id"
+
+#: crates/jox/resources/ui/metadata_dialog.ui:208
+msgid "TheTVDb Id"
+msgstr "TheTVDb Id"
+
+#: crates/jox/resources/ui/metadata_dialog.ui:213
+msgid "IMDb Id"
+msgstr "IMDb Id"
+
+#: crates/jox/resources/ui/metadata_dialog.ui:221
+msgid "Lock The Item"
+msgstr "Заблокировать объект"
+
+#: crates/jox/resources/ui/missing_episodes.ui:6
+#: crates/jox/resources/ui/missing_episodes.ui:36
+msgid "Missing Episodes"
+msgstr "Пропущенные эпизоды"
+
+#: crates/jox/resources/ui/missing_episodes.ui:60
+msgid "Specials"
+msgstr "Специальные"
+
+#: crates/jox/resources/ui/missing_episodes.ui:72
+msgid "Upcoming"
+msgstr "Ожидаемые"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:5
+#: crates/jox/resources/ui/window.ui:451
+msgid "Advanced Settings"
+msgstr "Расширенные настройки"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:18
+msgid "Seek Action"
+msgstr "Перемотать"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:21
+msgid "Playback speed"
+msgstr "Скорость воспроизведения"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:42
+msgid "Seek Backward"
+msgstr "Перемотать назад"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:43
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:63
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:115
+msgid "Unit: Seconds"
+msgstr "В секундах"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:62
+msgid "Seek Forward"
+msgstr "Перемотать вперед"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:93
+msgid "Show Buffer Speed"
+msgstr "Отобразить скорость буфера"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:98
+msgid "Cache Size"
+msgstr "Размер кэша"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:99
+msgid "Unit: MB"
+msgstr "В мегабайтах"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:114
+msgid "Cache Time"
+msgstr "Время кэширования"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:132
+#: crates/jox/resources/ui/mpvpage.ui:371
+msgid "Subtitle"
+msgstr "Субтитры"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:135
+msgid "Subtitle Composing"
+msgstr "Субтитры"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:206
+msgid "Position"
+msgstr "Позиция"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:226
+msgid "Subtitle Text Size"
+msgstr "Размер текста"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:227
+msgid "This option only takes effect for srt subtitles"
+msgstr "Применимо только к srt субтитрам"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:247
+msgid "Subtitle Text Scale"
+msgstr "Масштаб"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:248
+msgid "This affects ASS subtitles as well"
+msgstr "Применимо так же к ass субтитрам"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:269
+msgid "Subtitle Text Font"
+msgstr "Шрифт"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:271
+msgid ""
+"Specify font to use for subtitles that do not themselves specify a "
+"particular font"
+msgstr ""
+"Укажите шрифт, который будет использоваться для субтитров, если они сами не "
+"указывают конкретный шрифт"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:296
+msgid "Border Style"
+msgstr "Стиль рамки"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:301
+msgid "Outline and shadow"
+msgstr "Контур и тень"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:302
+msgid "Opaque box"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:303
+msgid "Background box"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:311
+msgid "Border Size"
+msgstr "Размер рамки"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:342
+msgid "Stretch Image Subtitles to Screen"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:349
+msgid "Subtitle Color"
+msgstr "Цвет"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:362
+msgid "Text"
+msgstr "Текст"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:380
+msgid "Border"
+msgstr "Рамка"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:418
+msgid "Subtitle Offset"
+msgstr "Смещение субтитров"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:431
+msgid "Offset"
+msgstr "Смешщение"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:432
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:481
+msgid "Unit: ms"
+msgstr "В миллисекундах"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:467
+#: crates/jox/resources/ui/mpvpage.ui:359
+#: crates/jox/resources/ui/search.ui:78
+msgid "Audio"
+msgstr "Аудио"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:480
+msgid "Audio Offset"
+msgstr "Смещение аудио"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:496
+msgid "Audio Channel"
+msgstr "Канал аудио"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:502
+msgid "Auto (Safety)"
+msgstr "Авто (Безопасность)"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:503
+msgid "Mono"
+msgstr "Моно"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:504
+msgid "Dual Channel"
+msgstr "Двойной канал"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:505
+msgid "Dual Channel (Invert)"
+msgstr "Двойной канал (инверсия)"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:515
+#: crates/jox/resources/ui/other.ui:152
+#: crates/jox/resources/ui/search.ui:84
+msgid "Video"
+msgstr "Видео"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:518
+msgid "Video Aspect"
+msgstr "Соотношение сторон видео"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:523
+msgid "Fit"
+msgstr "Вместить"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:524
+msgid "Crop"
+msgstr "Обрезать"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:532
+msgid "Video color grading"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:545
+msgid "Brightness"
+msgstr "Яркость"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:560
+msgid "Contrast"
+msgstr "Констрастность"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:575
+msgid "Saturation"
+msgstr "Насыщеность"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:590
+msgid "Hue"
+msgstr "Оттенок"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:605
+msgid "Gamma"
+msgstr "Гамма"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:622
+msgid "Video Deband"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:645
+msgid "Deband Iterations"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:660
+msgid "Deband Threshold"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:675
+msgid "Deband Range"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:690
+msgid "Deband Grain"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:708
+msgid "Video Deinterlace"
+msgstr "Устранение чересстрочности видео"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:713
+msgid "Video Upscale"
+msgstr "Апскейл видео"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:736
+msgid "Action after video ends"
+msgstr "Действие после окончания видео"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:739
+msgid "Play Next"
+msgstr "Воспроизвести следующее"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:752
+msgid "Loop Playback"
+msgstr "Повтор воспроизведения"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:766
+msgid "Stop"
+msgstr "Остановить"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:782
+msgid "Hardware decoding"
+msgstr "Аппаратный декодинг"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:786
+msgid "no (default)"
+msgstr "Нет (по умолчнанию)"
+
+#: crates/jox/resources/ui/mpv_control_sidebar.ui:830
+msgid "Not all settings will be saved"
+msgstr "Не все настройки будут сохранены"
+
+#: crates/jox/resources/ui/mpv_menu.ui:11
+msgid "_Next"
+msgstr "_Следующий"
+
+#: crates/jox/resources/ui/mpv_menu.ui:16
+msgid "_Previous"
+msgstr "_Предыдущий"
+
+#: crates/jox/resources/ui/mpv_menu.ui:23
+msgid "Next chapter"
+msgstr "Следующая глава"
+
+#: crates/jox/resources/ui/mpv_menu.ui:28
+msgid "Previous chapter"
+msgstr "Предыдущая глава"
+
+#: crates/jox/resources/ui/mpv_menu.ui:35
+#: crates/jox/resources/ui/mpvpage.ui:179
+#: crates/jox/resources/ui/window.ui:400
+#: crates/jox/resources/ui/window.ui:422
+msgid "Playlist"
+msgstr "Плейлист"
+
+#: crates/jox/resources/ui/mpv_menu.ui:40
+#: crates/jox/resources/ui/mpvpage.ui:407
+msgid "Advanced settings"
+msgstr "Расширенные настройки"
+
+#: crates/jox/resources/ui/mpv_menu.ui:47
+msgid "Media info"
+msgstr "Медиа инфо"
+
+#: crates/jox/resources/ui/mpv_menu.ui:54
+#: crates/jox/resources/ui/window.ui:35
+#: crates/jox/resources/ui/window.ui:64
+msgid "_Keyboard shortcuts"
+msgstr "_Горячие клавиши"
+
+#: crates/jox/resources/ui/mpv_menu_actions.ui:12
+#: crates/jox/resources/ui/mpvpage.ui:255
+msgid "Backward"
+msgstr "Назад"
+
+#: crates/jox/resources/ui/mpv_menu_actions.ui:42
+#: crates/jox/resources/ui/mpvpage.ui:298
+msgid "Forward"
+msgstr "Вперед"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:9
+#, fuzzy
+msgid "Pause / Resume"
+msgstr "Продолжить"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:15
+#, fuzzy
+msgid "Seek Forward 5 Seconds"
+msgstr "Перемотать вперед"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:21
+#, fuzzy
+msgid "Seek Backward 5 Seconds"
+msgstr "Перемотать назад"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:27
+#, fuzzy
+msgid "Seek Forward 60 Seconds"
+msgstr "Перемотать вперед"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:33
+#, fuzzy
+msgid "Seek Backward 60 Seconds"
+msgstr "Перемотать назад"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:39
+msgid "Seek Forward 1 Second (Exact)"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:45
+#, fuzzy
+msgid "Seek Backward 1 Second (Exact)"
+msgstr "Перемотать назад"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:51
+#, fuzzy
+msgid "Step One Frame Forward"
+msgstr "Перемотать вперед"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:57
+#, fuzzy
+msgid "Step One Frame Backward"
+msgstr "Перемотать назад"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:65
+#, fuzzy
+msgid "Playback Speed"
+msgstr "Скорость воспроизведения"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:68
+#, fuzzy
+msgid "Decrease Speed by 10%"
+msgstr "Уменьшить/увеличить скорость воспроизведения на 10%"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:74
+#, fuzzy
+msgid "Increase Speed by 10%"
+msgstr "Уменьшить/увеличить скорость воспроизведения на 10%"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:80
+#, fuzzy
+msgid "Halve Playback Speed"
+msgstr "Скорость воспроизведения"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:86
+#, fuzzy
+msgid "Double Playback Speed"
+msgstr "Скорость воспроизведения"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:92
+#, fuzzy
+msgid "Reset Playback Speed"
+msgstr "Скорость воспроизведения"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:100
+msgid "Volume"
+msgstr "Громкость"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:103
+msgid "Increase Volume"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:109
+msgid "Decrease Volume"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:115
+msgid "Mute / Unmute"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:121
+msgid "Increase Volume (Numpad)"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:127
+msgid "Decrease Volume (Numpad)"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:135
+#, fuzzy
+msgid "Subtitles"
+msgstr "Субтитры"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:138
+msgid "Cycle Subtitle Tracks Forward"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:144
+msgid "Cycle Subtitle Tracks Backward"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:150
+msgid "Toggle Subtitle Visibility"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:156
+msgid "Decrease Subtitle Delay"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:162
+msgid "Increase Subtitle Delay"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:168
+#, fuzzy
+msgid "Increase Subtitle Font Size"
+msgstr "Размер текста"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:174
+#, fuzzy
+msgid "Decrease Subtitle Font Size"
+msgstr "Размер текста"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:182
+msgid "Tracks"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:185
+msgid "Cycle Audio Tracks"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:191
+msgid "Cycle Video Tracks"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:199
+msgid "Chapters and Playlist"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:202
+#, fuzzy
+msgid "Previous Chapter"
+msgstr "Предыдущая глава"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:208
+#, fuzzy
+msgid "Next Chapter"
+msgstr "Следующая глава"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:214
+#, fuzzy
+msgid "Previous Playlist Entry"
+msgstr "Предыдущая глава"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:220
+msgid "Next Playlist Entry"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:231
+#, fuzzy
+msgid "Toggle Fullscreen"
+msgstr "Полноэкранный режим"
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:237
+msgid "Set / Clear A-B Loop Points"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:243
+msgid "Toggle Infinite Loop"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:249
+msgid "Display Statistics"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:255
+msgid "Quit"
+msgstr ""
+
+#: crates/jox/resources/ui/mpv_shortcuts_window.ui:261
+msgid "Quit and Save Position"
+msgstr ""
+
+#: crates/jox/resources/ui/mpvpage.ui:108
+msgid "Stop and quit"
+msgstr "Остановить и выйти"
+
+#: crates/jox/resources/ui/mpvpage.ui:165
+msgid "Shortcuts"
+msgstr ""
+
+#: crates/jox/resources/ui/mpvpage.ui:193
+msgid "Media info (MPV)"
+msgstr "Медиа инфо (MPV)"
+
+#: crates/jox/resources/ui/mpvpage.ui:279
+#: crates/jox/src/ui/mpv/page.rs:381 crates/jox/src/ui/mpv/page.rs:383
+msgid "Pause"
+msgstr "Пауза"
+
+#: crates/jox/resources/ui/mpvpage.ui:383
+#, fuzzy
+msgid "Adjust Volume"
+msgstr "Громкость"
+
+#: crates/jox/resources/ui/other.ui:113
+#: crates/jox/src/ui/widgets/tu_overview_item.rs:239
+msgid "No Inscriptions"
+msgstr ""
+
+#: crates/jox/resources/ui/other.ui:140
+#: crates/jox/resources/ui/search.ui:48
+msgid "Series"
+msgstr "Сериал"
+
+#: crates/jox/resources/ui/other.ui:146
+#: crates/jox/resources/ui/search.ui:90
+msgid "Episode"
+msgstr "Эпизод"
+
+#: crates/jox/resources/ui/player_toolbar.ui:104
+msgid "Previous"
+msgstr "Предыдущий"
+
+#: crates/jox/resources/ui/player_toolbar.ui:134
+msgid "Next"
+msgstr "Следующий"
+
+#: crates/jox/resources/ui/player_toolbar.ui:206
+msgid "Stop And Hide PlayerBar"
+msgstr "Остановить и спрятать панель плеера"
+
+#: crates/jox/resources/ui/pop-menu.ui:11
+msgid "Remove"
+msgstr "Удалить"
+
+#: crates/jox/resources/ui/pop-menu.ui:17
+msgid "Like"
+msgstr "Нравится"
+
+#: crates/jox/resources/ui/pop-menu.ui:23
+msgid "Unlike"
+msgstr "Не нравится"
+
+#: crates/jox/resources/ui/pop-menu.ui:63
+#: crates/jox/src/ui/widgets/tu_item/action.rs:554
+#: crates/jox/src/ui/widgets/tu_item/action.rs:555
+#: crates/jox/src/ui/widgets/tu_item/action.rs:560
+msgid "Remove Identification"
+msgstr "Удалить идентификацию"
+
+#: crates/jox/resources/ui/pop-menu.ui:71
+msgid "View Missing Episodes"
+msgstr "Посмотреть пропущенные эпизоды"
+
+#: crates/jox/resources/ui/pop-menu.ui:79
+#: crates/jox/resources/ui/refresh_dialog.ui:8
+msgid "Refresh Metadata"
+msgstr "Обновить метаданные"
+
+#: crates/jox/resources/ui/pop-menu.ui:85
+msgid "Scan"
+msgstr "Сканировать"
+
+#: crates/jox/resources/ui/refresh_dialog.ui:30
+msgid "Replace All Metadata"
+msgstr "Заменить все метаданные"
+
+#: crates/jox/resources/ui/refresh_dialog.ui:39
+msgid "Replace All Images"
+msgstr "Заменить все изображения"
+
+#: crates/jox/resources/ui/refresh_dialog.ui:49
+#: crates/jox/resources/ui/server_action_row.ui:41
+msgid "Refresh"
+msgstr "Обновить"
+
+#: crates/jox/resources/ui/search.ui:60
+#: crates/jox/src/ui/widgets/list.rs:133
+msgid "BoxSet"
+msgstr ""
+
+#: crates/jox/resources/ui/search.ui:66
+msgid "Person"
+msgstr "Человек"
+
+#: crates/jox/resources/ui/search.ui:72
+msgid "Music Album"
+msgstr "Музыкальный альбом"
+
+#: crates/jox/resources/ui/search.ui:166
+msgid "Nothing Here or No type selected"
+msgstr "Пусто или не выбран тип"
+
+#: crates/jox/resources/ui/search.ui:167
+msgid "Maybe you should try using different search terms"
+msgstr "Возможно, стоит попробовать использовать другие поисковые запросы"
+
+#: crates/jox/resources/ui/server_action_row.ui:23
+msgid "Drag to reorder"
+msgstr "Перетащите для изменения порядка"
+
+#: crates/jox/resources/ui/server_panel.ui:47
+msgid "Restart Server"
+msgstr "Перезапустить сервер"
+
+#: crates/jox/resources/ui/server_panel.ui:58
+msgid "Shutdown Server"
+msgstr "Выключить сервер"
+
+#: crates/jox/resources/ui/server_panel.ui:78
+msgid "System Logs"
+msgstr "Системный журнал"
+
+#: crates/jox/resources/ui/server_panel.ui:83
+msgid "Activity Logs"
+msgstr "Журнал активностей"
+
+#: crates/jox/resources/ui/server_panel.ui:103
+msgid "Tasks"
+msgstr "Задачи"
+
+#: crates/jox/resources/ui/single_grid.ui:32
+msgid "Change Poster"
+msgstr "Изменить постер"
+
+#: crates/jox/resources/ui/single_grid.ui:38
+msgid "View"
+msgstr "Вид"
+
+#: crates/jox/resources/ui/single_grid.ui:65
+msgid "Grid View"
+msgstr "Сетка"
+
+#: crates/jox/resources/ui/single_grid.ui:72
+msgid "List View"
+msgstr "Список"
+
+#: crates/jox/resources/ui/single_grid.ui:84
+msgid "Ascending"
+msgstr "По возрастанию"
+
+#: crates/jox/resources/ui/single_grid.ui:91
+msgid "Descending"
+msgstr "По убыванию"
+
+#: crates/jox/resources/ui/single_grid.ui:101
+msgid "Sort By"
+msgstr "Сортировка"
+
+#: crates/jox/resources/ui/single_grid.ui:106
+#: crates/jox/src/ui/widgets/item.rs:1146
+msgid "Bitrate"
+msgstr "Битрейт"
+
+#: crates/jox/resources/ui/single_grid.ui:108
+msgid "Imdb Rate"
+msgstr "Рейтинг Imdb"
+
+#: crates/jox/resources/ui/single_grid.ui:109
+msgid "Critic Rating"
+msgstr "Рейтинг критиков"
+
+#: crates/jox/resources/ui/single_grid.ui:110
+msgid "Premiere Date"
+msgstr "Дата премьеры"
+
+#: crates/jox/resources/ui/single_grid.ui:111
+msgid "Offical Rating"
+msgstr "Официальный рейтинг"
+
+#: crates/jox/resources/ui/single_grid.ui:112
+msgid "Production Year"
+msgstr "Год производства"
+
+#: crates/jox/resources/ui/single_grid.ui:113
+msgid "Date Played"
+msgstr "Дата воспроизведения"
+
+#: crates/jox/resources/ui/single_grid.ui:114
+msgid "Runtime"
+msgstr "Длительность"
+
+#: crates/jox/resources/ui/single_grid.ui:115
+msgid "Updated At"
+msgstr "Обновлено в"
+
+#: crates/jox/resources/ui/single_grid.ui:179
+msgid "Poster"
+msgstr "Постер"
+
+#: crates/jox/resources/ui/single_grid.ui:183
+msgid "Backdrop"
+msgstr "Фон"
+
+#: crates/jox/resources/ui/single_grid.ui:187
+msgid "Banner"
+msgstr "Баннер"
+
+#: crates/jox/resources/ui/theme_switcher.ui:25
+#: crates/jox/resources/ui/theme_switcher.ui:27
+msgid "Follow system style"
+msgstr "Использовать системный стиль"
+
+#: crates/jox/resources/ui/theme_switcher.ui:43
+#: crates/jox/resources/ui/theme_switcher.ui:45
+msgid "Light style"
+msgstr "Светлый стиль"
+
+#: crates/jox/resources/ui/theme_switcher.ui:61
+#: crates/jox/resources/ui/theme_switcher.ui:63
+msgid "Dark style"
+msgstr "Темный стиль"
+
+#: crates/jox/resources/ui/window.ui:11
+msgid "Sign out"
+msgstr "Выйти"
+
+#: crates/jox/resources/ui/window.ui:25
+#: crates/jox/resources/ui/window.ui:54
+msgid "Preferences"
+msgstr "Параметры"
+
+#: crates/jox/resources/ui/window.ui:31
+#: crates/jox/resources/ui/window.ui:60
+msgid "About"
+msgstr "О Jox"
+
+#: crates/jox/resources/ui/window.ui:44
+msgid "Add server"
+msgstr "Добавить сервер"
+
+#: crates/jox/resources/ui/window.ui:163
+msgid "No Server"
+msgstr "Нет сервера"
+
+#: crates/jox/resources/ui/window.ui:166
+msgid "Add Server"
+msgstr "Добавить сервер"
+
+#: crates/jox/resources/ui/window.ui:205
+msgid "Log Out"
+msgstr "Выйти"
+
+#: crates/jox/resources/ui/window.ui:246
+msgid "Contents"
+msgstr "Содержание"
+
+#: crates/jox/resources/ui/window.ui:249
+#: crates/jox/src/ui/widgets/window.rs:341
+msgid "Home"
+msgstr "Домой"
+
+#: crates/jox/resources/ui/window.ui:255
+#: crates/jox/src/ui/widgets/list.rs:136
+#: crates/jox/src/ui/widgets/window.rs:353
+msgid "Liked"
+msgstr "Понравившееся"
+
+#: crates/jox/resources/ui/window.ui:269
+msgid "Servers"
+msgstr "Сервера"
+
+#: crates/jox/src/client/error.rs:19
+msgid "Timeout Error, Check your internet connection"
+msgstr "Ошибка по таймауту, Проверьте подключение к Интернету"
+
+#: crates/jox/src/client/error.rs:22
+msgid "Connection Error, Check your internet connection"
+msgstr "Ошибка подключения Проверьте подключение к Интернету"
+
+#: crates/jox/src/ui/mpv/control_sidebar.rs:531
+msgid "Video filter settings cleared."
+msgstr "Настройки фильтра видео сброшены."
+
+#: crates/jox/src/ui/mpv/control_sidebar.rs:555
+msgid "Subtitle settings cleared."
+msgstr "Настройки субтитров сброшены."
+
+#: crates/jox/src/ui/mpv/control_sidebar.rs:568
+msgid "Subtitle color settings cleared."
+msgstr "Настройки цвета субтитров сброшены."
+
+#: crates/jox/src/ui/mpv/control_sidebar.rs:577
+msgid "Subtitle offset settings cleared."
+msgstr "Настройки смещения субтитров сброшены."
+
+#: crates/jox/src/ui/mpv/control_sidebar.rs:619
+msgid "Deband settings cleared."
+msgstr ""
+
+#: crates/jox/src/ui/mpv/danmaku_popover.rs:39
+msgid "{count} Danmaku Loaded"
+msgstr ""
+
+#: crates/jox/src/ui/mpv/danmaku_popover.rs:47
+#, fuzzy
+msgid "Searching"
+msgstr "Поиск"
+
+#: crates/jox/src/ui/mpv/danmaku_popover.rs:48
+#, fuzzy
+msgid "Loading"
+msgstr "Загрузка..."
+
+#: crates/jox/src/ui/mpv/danmaku_popover.rs:51
+#: crates/jox/src/ui/mpv/danmaku_search_dialog.rs:287
+msgid "No danmaku found"
+msgstr ""
+
+#: crates/jox/src/ui/mpv/danmaku_popover.rs:53
+msgid "This feature requires an official build"
+msgstr ""
+
+#: crates/jox/src/ui/mpv/danmaku_popover.rs:55
+#, fuzzy
+#| msgid "Not Available"
+msgid "Not loaded"
+msgstr "Не доступно"
+
+#: crates/jox/src/ui/mpv/danmaku_popover.rs:57
+msgid "Maybe there is something wrong"
+msgstr ""
+
+#: crates/jox/src/ui/mpv/danmaku_popover.rs:63
+msgid "From 弹弹play开放弹幕网络 (Auto Matched)"
+msgstr ""
+
+#: crates/jox/src/ui/mpv/danmaku_popover.rs:65
+msgid "From 弹弹play开放弹幕网络 (Manually Matched)"
+msgstr ""
+
+#: crates/jox/src/ui/mpv/danmaku_search_dialog.rs:195
+msgid "Enter at least two characters"
+msgstr ""
+
+#: crates/jox/src/ui/mpv/danmaku_search_dialog.rs:215
+#, fuzzy
+msgid "No matching anime found"
+msgstr "Больше видео не найдено"
+
+#: crates/jox/src/ui/mpv/danmaku_search_dialog.rs:219
+#, fuzzy
+msgid "Search failed"
+msgstr "Поиск"
+
+#: crates/jox/src/ui/mpv/danmaku_search_dialog.rs:250
+#, fuzzy
+msgid "Invalid episode ID"
+msgstr "Некорректное регулярное выражение"
+
+#: crates/jox/src/ui/mpv/danmaku_search_dialog.rs:289
+#, fuzzy
+#| msgid "Failed to load image"
+msgid "Failed to load danmaku"
+msgstr "Не удалось загрузить изображение"
+
+#: crates/jox/src/ui/mpv/danmaku_search_dialog.rs:350
+#, fuzzy
+#| msgid "No more video found"
+msgid "No episodes found"
+msgstr "Больше видео не найдено"
+
+#: crates/jox/src/ui/mpv/danmaku_search_dialog.rs:354
+#, fuzzy
+#| msgid "Failed to load image"
+msgid "Failed to load episodes"
+msgstr "Не удалось загрузить изображение"
+
+#: crates/jox/src/ui/mpv/page.rs:746
+msgid "Initializing..."
+msgstr ""
+
+#: crates/jox/src/ui/mpv/page.rs:784 crates/jox/src/ui/mpv/page.rs:850
+#, fuzzy
+#| msgid "No video source found"
+msgid "No media source found"
+msgstr "Не найден источник видео"
+
+#: crates/jox/src/ui/mpv/page.rs:929
+msgid "Skip Intro"
+msgstr ""
+
+#: crates/jox/src/ui/mpv/page.rs:930
+msgid "Skip Outro"
+msgstr ""
+
+#: crates/jox/src/ui/mpv/page.rs:1077
+msgid "No more video found"
+msgstr "Больше видео не найдено"
+
+#: crates/jox/src/ui/mpv/page.rs:1187
+msgid ""
+"MPV has been shutdown, Application will exit.\n"
+"Jox can't restart MPV."
+msgstr ""
+"MPV был выключен, приложение будет закрыто.\n"
+"Jox не может перезапустить MPV."
+
+#: crates/jox/src/ui/provider/actions.rs:56
+#: crates/jox/src/ui/widgets/identify/search_page.rs:162
+#: crates/jox/src/ui/widgets/image_dialog/search_page.rs:181
+#: crates/jox/src/ui/widgets/item_actionbox.rs:121
+#: crates/jox/src/ui/widgets/item_actionbox.rs:187
+#: crates/jox/src/ui/widgets/item_actionbox.rs:220
+#: crates/jox/src/ui/widgets/metadata_dialog.rs:313
+#: crates/jox/src/ui/widgets/tu_item/action.rs:98
+msgid "Success"
+msgstr "Успешно"
+
+#: crates/jox/src/ui/provider/tu_item.rs:648
+msgid "No next up video found"
+msgstr "Следующее видео не найдено"
+
+#: crates/jox/src/ui/provider/tu_item.rs:677
+#: crates/jox/src/ui/widgets/tu_overview_item.rs:276
+msgid "Present"
+msgstr "Текущий"
+
+#: crates/jox/src/ui/provider/tu_item.rs:685
+#: crates/jox/src/ui/provider/tu_item.rs:703
+#: crates/jox/src/ui/provider/tu_item.rs:726
+#: crates/jox/src/ui/provider/tu_item.rs:749
+#: crates/jox/src/ui/provider/tu_item.rs:752
+msgid "Unknown"
+msgstr ""
+
+#: crates/jox/src/ui/widgets/account_add.rs:145
+msgid "Fields must be filled in"
+msgstr "Поля должны быть заполнены"
+
+#: crates/jox/src/ui/widgets/account_add.rs:195
+msgid "Server edited successfully"
+msgstr "Сервер успешно изменен"
+
+#: crates/jox/src/ui/widgets/account_add.rs:200
+msgid "Server added successfully"
+msgstr "Сервер успешно добавлен"
+
+#: crates/jox/src/ui/widgets/account_settings.rs:236
+msgid "Password cannot be empty!"
+msgstr "Пароль не может быть пустым!"
+
+#: crates/jox/src/ui/widgets/account_settings.rs:240
+msgid "Passwords do not match!"
+msgstr "Пароли не совпадают!"
+
+#: crates/jox/src/ui/widgets/account_settings.rs:247
+msgid "Password changed successfully! Please login again."
+msgstr "Пароль успешно изменен! Пожалуйста, войдте заново."
+
+#: crates/jox/src/ui/widgets/account_settings.rs:251
+msgid "Failed to change password"
+msgstr "Не удалось изменить пароль"
+
+#: crates/jox/src/ui/widgets/account_settings.rs:285
+msgid "Cache Cleared"
+msgstr "Кэш очищен"
+
+#: crates/jox/src/ui/widgets/account_settings.rs:306
+msgid "No file selected"
+msgstr "Файл не выбран"
+
+#: crates/jox/src/ui/widgets/account_settings.rs:559
+#: crates/jox/src/ui/widgets/account_settings.rs:568
+#: crates/jox/src/ui/widgets/account_settings.rs:602
+#: crates/jox/src/ui/widgets/account_settings.rs:611
+msgid "Descriptor cannot be empty!"
+msgstr "Дескриптор не может быть пустым!"
+
+#: crates/jox/src/ui/widgets/account_settings.rs:573
+#: crates/jox/src/ui/widgets/account_settings.rs:616
+msgid "Invalid regex"
+msgstr "Некорректное регулярное выражение"
+
+#: crates/jox/src/ui/widgets/home.rs:418
+msgid "Latest"
+msgstr "Последние"
+
+#: crates/jox/src/ui/widgets/identify/dialog.rs:140
+msgid "Failed to get path"
+msgstr "Не удалось получить путь"
+
+#: crates/jox/src/ui/widgets/identify/search_page.rs:127
+#: crates/jox/src/ui/widgets/image_dialog/search_page.rs:148
+#: crates/jox/src/ui/widgets/metadata_dialog.rs:286
+#: crates/jox/src/ui/widgets/tu_item/action.rs:495
+msgid "Are you sure you wish to continue?"
+msgstr "Вы уверены, что хотите продолжить?"
+
+#: crates/jox/src/ui/widgets/identify/search_page.rs:131
+#: crates/jox/src/ui/widgets/image_dialog/search_page.rs:152
+#: crates/jox/src/ui/widgets/metadata_dialog.rs:290
+msgid "Ok"
+msgstr "Хорошо"
+
+#: crates/jox/src/ui/widgets/identify/search_page.rs:134
+msgid "Replace existing images"
+msgstr "Заменить существующие изображения"
+
+#: crates/jox/src/ui/widgets/image_dialog/image_adw_dialog.rs:130
+#, fuzzy
+msgid "View Images"
+msgstr "Посмотреть изображение"
+
+#: crates/jox/src/ui/widgets/image_dialog/image_edit_dialog_page.rs:182
+msgid "Image saved"
+msgstr "Изображение сохранено"
+
+#: crates/jox/src/ui/widgets/image_dialog/image_edit_dialog_page.rs:187
+msgid "Failed to load image"
+msgstr "Не удалось загрузить изображение"
+
+#: crates/jox/src/ui/widgets/image_dialog/image_infocard.rs:159
+msgid "No image to view"
+msgstr "Нет изображения для показа"
+
+#: crates/jox/src/ui/widgets/image_dialog/image_infocard.rs:175
+msgid "No image to copy"
+msgstr "Нет изображения для копирования"
+
+#: crates/jox/src/ui/widgets/image_dialog/image_infocard.rs:179
+#: crates/jox/src/ui/widgets/media_viewer.rs:349
+msgid "Image copied to clipboard"
+msgstr "Скопировано в буфер обмена"
+
+#: crates/jox/src/ui/widgets/image_dialog/image_infocard.rs:218
+msgid "Image deleted"
+msgstr "Изображение удалено"
+
+#: crates/jox/src/ui/widgets/image_dialog/image_infocard.rs:223
+msgid "Error deleting image"
+msgstr "Ошибка удаления изображения"
+
+#: crates/jox/src/ui/widgets/image_dialog/image_infocard.rs:254
+#, fuzzy
+msgid "Error loading image"
+msgstr "Ошибка удаления изображения"
+
+#: crates/jox/src/ui/widgets/image_dialog/search_page.rs:146
+msgid "Replace Image"
+msgstr "Заменить изображение"
+
+#: crates/jox/src/ui/widgets/item.rs:358
+#, fuzzy
+msgid "No episode selected"
+msgstr "Файл не выбран"
+
+#: crates/jox/src/ui/widgets/item.rs:359
+#, fuzzy
+msgid "Select an episode"
+msgstr "Выберите новую директорию конфигурации mpv"
+
+#: crates/jox/src/ui/widgets/item.rs:696
+#: crates/jox/src/ui/widgets/list.rs:132
+msgid "Resume"
+msgstr "Продолжить"
+
+#: crates/jox/src/ui/widgets/item.rs:1048
+msgid "Finishes at {time}"
+msgstr ""
+
+#: crates/jox/src/ui/widgets/item.rs:1136
+msgid "Codec"
+msgstr "Кодек"
+
+#: crates/jox/src/ui/widgets/item.rs:1139
+msgid "Language"
+msgstr "Язык"
+
+#: crates/jox/src/ui/widgets/item.rs:1151
+msgid "BitDepth"
+msgstr "Глубина цвета"
+
+#: crates/jox/src/ui/widgets/item.rs:1155
+msgid "SampleRate"
+msgstr "Частота дискретизации"
+
+#: crates/jox/src/ui/widgets/item.rs:1159
+msgid "Height"
+msgstr "Высота"
+
+#: crates/jox/src/ui/widgets/item.rs:1162
+msgid "Width"
+msgstr "Ширина"
+
+#: crates/jox/src/ui/widgets/item.rs:1165
+msgid "ColorSpace"
+msgstr ""
+
+#: crates/jox/src/ui/widgets/item.rs:1169
+msgid "DisplayTitle"
+msgstr ""
+
+#: crates/jox/src/ui/widgets/item.rs:1173
+msgid "Channel"
+msgstr "Канал"
+
+#: crates/jox/src/ui/widgets/item.rs:1177
+msgid "ChannelLayout"
+msgstr "Схема каналов"
+
+#: crates/jox/src/ui/widgets/item.rs:1182
+msgid "AverageFrameRate"
+msgstr "Средний фреймрейт"
+
+#: crates/jox/src/ui/widgets/item.rs:1186
+msgid "PixelFormat"
+msgstr "Формат пикселей"
+
+#: crates/jox/src/ui/widgets/item.rs:1295
+msgid "No video source found"
+msgstr "Не найден источник видео"
+
+#: crates/jox/src/ui/widgets/item.rs:1368
+msgid "Season not found. Is this a continue watching list?"
+msgstr ""
+
+#: crates/jox/src/ui/widgets/liked.rs:155
+msgid "Favourite"
+msgstr "Любимое"
+
+#: crates/jox/src/ui/widgets/list.rs:124
+msgid "Channels"
+msgstr "Каналы"
+
+#: crates/jox/src/ui/widgets/list.rs:131
+msgid "All"
+msgstr "Все"
+
+#: crates/jox/src/ui/widgets/list.rs:137
+msgid "Folder"
+msgstr "Папка"
+
+#: crates/jox/src/ui/widgets/missing_episodes_dialog.rs:147
+msgid "Special"
+msgstr ""
+
+#: crates/jox/src/ui/widgets/music_album.rs:241
+msgid "Songs"
+msgstr "Песни"
+
+#: crates/jox/src/ui/widgets/music_album.rs:343
+msgid "More From"
+msgstr "Больше от"
+
+#: crates/jox/src/ui/widgets/refresh_dialog.rs:94
+#: crates/jox/src/ui/widgets/tu_item/action.rs:278
+msgid "Scanning..."
+msgstr "Сканирование..."
+
+#: crates/jox/src/ui/widgets/search.rs:198
+#, fuzzy
+msgid "No overview"
+msgstr "Обзор"
+
+#: crates/jox/src/ui/widgets/server_action_row.rs:128
+#, fuzzy
+msgid "Edit Server"
+msgstr "Добавить сервер"
+
+#: crates/jox/src/ui/widgets/server_panel.rs:119
+msgid "Shut down server"
+msgstr "Выключить сервер"
+
+#: crates/jox/src/ui/widgets/server_panel.rs:120
+msgid "Are you sure you want to shut down the server?"
+msgstr "Вы уверены, что хотите выключить сервер?"
+
+#: crates/jox/src/ui/widgets/server_panel.rs:151
+msgid "Restart server"
+msgstr "Перезапустить сервер"
+
+#: crates/jox/src/ui/widgets/server_panel.rs:152
+msgid "Are you sure you want to restart the server?"
+msgstr "Вы уверены, что хотите перезапустить сервер?"
+
+#: crates/jox/src/ui/widgets/server_panel.rs:155
+msgid "Revert"
+msgstr "Вернуть"
+
+#: crates/jox/src/ui/widgets/server_panel.rs:156
+msgid "Confirm"
+msgstr "Подтвердить"
+
+#: crates/jox/src/ui/widgets/server_panel.rs:192
+msgid "Server is shutting down"
+msgstr "Сервер выключается"
+
+#: crates/jox/src/ui/widgets/server_panel.rs:204
+msgid "Server is restarting"
+msgstr "Сервер перезапускается"
+
+#: crates/jox/src/ui/widgets/server_panel.rs:291
+msgid "Last execute: "
+msgstr "Последнее выполнение: "
+
+#: crates/jox/src/ui/widgets/server_panel.rs:296
+msgid "Duration: "
+msgstr "Продолжительность: "
+
+#: crates/jox/src/ui/widgets/server_panel.rs:301
+msgid "Result: "
+msgstr "Результат: "
+
+#: crates/jox/src/ui/widgets/server_panel.rs:347
+msgid "Task started"
+msgstr "Задание начато"
+
+#: crates/jox/src/ui/widgets/single_grid.rs:486
+msgid "Items"
+msgstr "Объектов"
+
+#: crates/jox/src/ui/widgets/star_toggle.rs:65
+msgid "Remove from favorites"
+msgstr "Удалить из любимых"
+
+#: crates/jox/src/ui/widgets/star_toggle.rs:70
+msgid "Add to favorites"
+msgstr "Добавить в любимые"
+
+#: crates/jox/src/ui/widgets/tu_item/action.rs:489
+msgid "Delete Item"
+msgstr "Удалить позицию"
+
+#: crates/jox/src/ui/widgets/tu_item/action.rs:493
+msgid ""
+"Deleting this item will delete it from both the file system and your media "
+"library.\n"
+"The following files and folders will be deleted:"
+msgstr ""
+"Удаление этого объекта приведет к его удалению как из файловой системы, так "
+"и из медиатеки.\n"
+"Следующие файлы и директории будут удалены:"
+
+#: crates/jox/src/ui/widgets/tu_item/action.rs:522
+#: crates/jox/src/ui/widgets/tu_item/action.rs:582
+#, fuzzy
+#| msgid "Image deleted"
+msgid "Item deleted"
+msgstr "Изображение удалено"
+
+#: crates/jox/src/ui/widgets/tu_item/action.rs:556
+msgid "Are you sure you wish to reset all metadata?"
+msgstr "Вы действительно хотите сбросить все метаданные?"
+
+#: crates/jox/src/ui/widgets/window.rs:852
+msgid "Server Panel"
+msgstr "Панель сервера"
+
+#: crates/jox/src/ui/widgets/window.rs:1024
+msgid "Fatal Error"
+msgstr "Критическая ошибка"
+
+#: crates/jox/src/ui/widgets/window.rs:1027
+msgid "Copy Error & Close"
+msgstr "Скопировать ошибку и закрыть"
+
+#. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+#: crates/jox/src/ui/widgets/window.rs:1056
+msgid "translator-credits"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Danmaku disabled"
+#~ msgstr "Danmaku"
+
+#, fuzzy
+#~| msgid "Failed to get GLContext"
+#~ msgid "Failed to realize GLArea"
+#~ msgstr "Не удалось получить GLContext"
+
+#~ msgid "Failed to get GLContext"
+#~ msgstr "Не удалось получить GLContext"
+
+#~ msgid "Video Output"
+#~ msgstr "Вывод видео"
+
+#~ msgid "Only for debugging"
+#~ msgstr "Только для дебага"
+
+#~ msgid "libmpv (default)"
+#~ msgstr "libmpv (по умолчанию)"
+
+#~ msgid "Waiting for mediasource ..."
+#~ msgstr "Ожидание источника медиа ..."
+
+#~ msgid "Halve/double current playback speed"
+#~ msgstr "Уменьшить/увеличить текущую скорость воспроизведения вдвое"
+
+#~ msgid "Reset playback speed to normal"
+#~ msgstr "Сбросить скорость воспроизведения к нормальной"
+
+#~ msgid "Restart App To Take Effect"
+#~ msgstr "Перезапустите приложение для применения эффекта"
+
+#~ msgid "Windows Alert"
+#~ msgstr "Оповещение Windows"
+
+#~ msgid ""
+#~ "It seems you're using Jox on Windows. Please note that GTK used by "
+#~ "this application is designed for Linux, and no functionality is "
+#~ "guaranteed to work on Windows, including but not limited to video "
+#~ "rendering, audio playback, network connections, and external links. "
+#~ "Additionally, there are known issues that cannot be fixed, such as black "
+#~ "borders, image rendering, font rendering, DPI scaling, video rendering, "
+#~ "GL renderer, fullscreen mode, HDR, and locale detection. \n"
+#~ "If you wish to open an issue, please ensure that it is related to this "
+#~ "software and not an upstream issue. Choose the appropriate issue template "
+#~ "and fill in all required fields without any omissions."
+#~ msgstr ""
+#~ "Похоже, вы используете Jox в Windows. Обратите внимание, что GTK, "
+#~ "используемый этим приложением, предназначен для Linux, и не гарантируется "
+#~ "функциональность для работы на Windows, в том числе но не только для "
+#~ "отображени видео, воспроизведения аудио, сетевых соединений и внешних "
+#~ "ссылок. Кроме того, есть известные проблемы, которые не могут быть "
+#~ "исправлены, такие как черные границы, визуализация изображений, отрисовка "
+#~ "шрифта, масштабирование DPI, визуализация видео, GL-рендер, режим полного "
+#~ "экрана, HDR и локальное обнаружение.\n"
+#~ "Если вы хотите открыть проблему, пожалуйста, убедитесь, что она связана с "
+#~ "этим программным обеспечением, а не с самим Jox. Выберите "
+#~ "соответствующий шаблон вопроса и заполните все требуемые поля без каких-"
+#~ "либо пропусков."
+
+#~ msgid "Close"
+#~ msgstr "Закрыть"
+
+#~ msgid ""
+#~ "This feature may cause significant lag. Please enable it with caution."
+#~ msgstr ""
+#~ "Эта функция может вызвать значительные задержки. Включайте её с "
+#~ "осторожностью."
+
+#~ msgid "Blur (Experimental)"
+#~ msgstr "Размытие (эксперементально)"
+
+#~ msgid "Warning: High GPU usage"
+#~ msgstr "Предупреждение: высокая нагрузка на GPU"
+
+#~ msgid "Blur Radius (Experimental)"
+#~ msgstr "Радиус размытия (эксперементально)"
+
+#~ msgid "Not implemented"
+#~ msgstr "Не реализовано"
+
+#~ msgid "Margin &amp; Size"
+#~ msgstr "Отступы &amp;amp; размер"
+
+#~ msgid "Top padding"
+#~ msgstr "Верхний отступ"
+
+#~ msgid "Font family"
+#~ msgstr "Шрифты"
+
+#~ msgid "API from DanDanPlay"
+#~ msgstr "API от DanDanPlay"

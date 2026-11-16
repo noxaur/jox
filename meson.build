@@ -1,5 +1,5 @@
 project(
-    'tsukimi',
+    'jox',
     'rust',
     version: '26.11.1',
     meson_version: '>= 1.1',
@@ -19,7 +19,7 @@ i18n = import('i18n')
 gnome = import('gnome')
 python = import('python').find_installation()
 
-cargo_toml = files('crates/tsukimi/Cargo.toml')
+cargo_toml = files('crates/jox/Cargo.toml')
 crate_min_version_script = '''
 import sys
 import tomllib
@@ -92,9 +92,9 @@ message(cargo_version)
 rustc_version = run_command('rustc', '--version', check: true).stdout().strip()
 message(rustc_version)
 
-subdir('crates/tsukimi/resources')
-subdir('crates/tsukimi/src')
-subdir('crates/tsukimi/po')
+subdir('crates/jox/resources')
+subdir('crates/jox/src')
+subdir('crates/jox/po')
 
 gnome.post_install(
     glib_compile_schemas: true,

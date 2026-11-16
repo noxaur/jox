@@ -2211,6 +2211,50 @@ dependencies = [
 ]
 
 [[package]]
+name = "jox"
+version = "26.11.1"
+dependencies = [
+ "anyhow",
+ "arc-swap",
+ "base64",
+ "bytefmt",
+ "cargo-husky",
+ "chrono",
+ "clap",
+ "dandanapi-client",
+ "derive_builder",
+ "flume",
+ "fnv",
+ "futures-util",
+ "gdk4-wayland",
+ "gdk4-x11",
+ "gettext-rs",
+ "glycin",
+ "gstreamer",
+ "gtk4",
+ "hostname",
+ "itertools",
+ "libadwaita",
+ "moka",
+ "mpris-server",
+ "mutsumi",
+ "once_cell",
+ "rand 0.10.3",
+ "regex",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "strsim",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
+ "url",
+ "uuid",
+ "xxhash-rust",
+ "yzlm",
+]
+
+[[package]]
 name = "js-sys"
 version = "0.3.106"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4099,50 +4143,6 @@ name = "try-lock"
 version = "0.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e421abadd41a4225275504ea4d6566923418b7f05506fbc9c0fe86ba7396114b"
-
-[[package]]
-name = "tsukimi"
-version = "26.11.1"
-dependencies = [
- "anyhow",
- "arc-swap",
- "base64",
- "bytefmt",
- "cargo-husky",
- "chrono",
- "clap",
- "dandanapi-client",
- "derive_builder",
- "flume",
- "fnv",
- "futures-util",
- "gdk4-wayland",
- "gdk4-x11",
- "gettext-rs",
- "glycin",
- "gstreamer",
- "gtk4",
- "hostname",
- "itertools",
- "libadwaita",
- "moka",
- "mpris-server",
- "mutsumi",
- "once_cell",
- "rand 0.10.3",
- "regex",
- "reqwest",
- "serde",
- "serde_json",
- "strsim",
- "tokio",
- "tracing",
- "tracing-subscriber",
- "url",
- "uuid",
- "xxhash-rust",
- "yzlm",
-]
 
 [[package]]
 name = "typeid"

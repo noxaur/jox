@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>com.perwko.jox</id>
+
+    <developer id="com.perwko">
+        <name>Per William Krogstad-Østensen</name>
+    </developer>
+
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-3.0-or-later</project_license>
+
+    <releases>
+        <release version="26.11.1" date="2026-10-23" />
+    </releases>
+
+    <name>Jox</name>
+    <summary>A quiet Jellyfin client</summary>
+    <summary xml:lang="zh_TW">一個簡單的第三方 Jellyfin 客戶端</summary>
+    <summary xml:lang="zh_CN">一个简单的第三方 Jellyfin 客户端</summary>
+
+    <url type="homepage">https://github.com/noxaur/jox</url>
+    <url type="bugtracker">https://github.com/noxaur/jox/issues</url>
+    <url type="vcs-browser">https://github.com/noxaur/jox</url>
+
+    <recommends>
+        <control>pointing</control>
+        <control>keyboard</control>
+    </recommends>
+
+    <description>
+        <p>Jox is a simple third-party Jellyfin client written in GTK4-RS, uses MPV as the video
+            player, and GStreamer as the music player.</p>
+        <p xml:lang="zh_CN">Jox 是一个使用 GTK4-RS 编写的简单第三方 Jellyfin 客户端，使用 MPV 作为视频播放器，并使用 GStreamer
+            作为音乐播放器。</p>
+        <p xml:lang="zh_TW">Jox 是一個使用 GTK4-RS 編寫的簡單第三方 Jellyfin 客戶端，使用 MPV 作為視頻播放器，並使用 GStreamer
+            作為音樂播放器。</p>
+    </description>
+    <screenshots>
+        <screenshot type="default">
+            <image>
+                https://raw.githubusercontent.com/noxaur/jox/74ee1651981ee9baa523585c12302355e506ae82/docs/jox1.png</image>
+        </screenshot>
+        <screenshot>
+            <image>
+                https://raw.githubusercontent.com/noxaur/jox/74ee1651981ee9baa523585c12302355e506ae82/docs/jox2.png</image>
+        </screenshot>
+        <screenshot>
+            <image>
+                https://raw.githubusercontent.com/noxaur/jox/74ee1651981ee9baa523585c12302355e506ae82/docs/jox3.png</image>
+        </screenshot>
+    </screenshots>
+
+    <!-- TODO: add branding colors -->
+    <content_rating type="oars-1.1" />
+    <launchable type="desktop-id">com.perwko.jox.desktop</launchable>
+</component>
