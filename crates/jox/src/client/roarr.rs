@@ -201,7 +201,7 @@ impl RoarrClient {
         &self, config: &Config, method: Method, path: &str, body: Option<&serde_json::Value>,
         timeout: Option<Duration>,
     ) -> Result<reqwest::Response> {
-        let mut request = self.client.request(method, config.base.join(path)?);
+        let mut request = self.api(method, config.base.join(path)?);
         if let Some(cookie) = self.cookie.lock().unwrap().clone() {
             request = request.header(header::COOKIE, cookie);
         }
@@ -214,10 +214,15 @@ impl RoarrClient {
         Ok(request.send().await?)
     }
 
+    /// A request to roarr's API. roarr refuses any call that is not a GET or
+    /// HEAD without `X-Roarr: 1`, its guard against cross-site requests.
+    fn api(&self, method: Method, url: Url) -> reqwest::RequestBuilder {
+        self.client.request(method, url).header("X-Roarr", "1")
+    }
+
     async fn login(&self, config: &Config) -> Result<()> {
         let response = self
-            .client
-            .post(config.base.join("api/login")?)
+            .api(Method::POST, config.base.join("api/login")?)
             .json(&json!({ "username": config.username, "password": config.password }))
             .send()
             .await?;
@@ -454,6 +459,15 @@ impl AutoResult {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// roarr's mock skips the CSRF guard, so only this test catches a lost header.
+    #[test]
+    fn api_requests_carry_the_roarr_header() {
+        let client = RoarrClient::default();
+        let url = Url::parse("http://roarr.test/api/login").unwrap();
+        let request = client.api(Method::POST, url).build().unwrap();
+        assert_eq!(request.headers().get("X-Roarr").unwrap(), "1");
+    }
 
     /// Runs against a live roarr, e.g. its mock: `node web/mock/server.mjs`,
     /// then `ROARR_TEST_URL=http://localhost:3999 cargo test -p jox roarr -- --ignored`.
