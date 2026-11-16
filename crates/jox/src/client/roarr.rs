@@ -264,6 +264,7 @@ pub struct ActivityItem {
     pub poster: String,
     /// downloading | queued | paused | importing | warning | failed | stalled
     pub status: String,
+    /// 0 to 1.
     pub progress: f64,
     pub size: i64,
     pub size_left: i64,
@@ -447,5 +448,55 @@ impl AutoResult {
             n => gettextrs::ngettext("Getting 1 release", "Getting {} releases", n as u32)
                 .replace("{}", &n.to_string()),
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Runs against a live roarr, e.g. its mock: `node web/mock/server.mjs`,
+    /// then `ROARR_TEST_URL=http://localhost:3999 cargo test -p jox roarr -- --ignored`.
+    #[tokio::test]
+    #[ignore]
+    async fn against_live_roarr() {
+        let url = std::env::var("ROARR_TEST_URL").expect("ROARR_TEST_URL");
+        let client = RoarrClient::default();
+        client.configure(&Account {
+            roarr_url: url,
+            username: "test".into(),
+            ..Default::default()
+        });
+
+        let activity = client.activity().await.unwrap();
+        assert!(!activity.is_empty());
+        assert!(activity.iter().all(|a| (0.0..=1.0).contains(&a.progress)));
+
+        let discover = client.discover("dune").await.unwrap();
+        assert!(discover.iter().any(|d| !d.in_library));
+
+        let requests = client.requests().await.unwrap();
+        println!("requests configured: {}", requests.configured);
+
+        let series = client.series_by_tvdb(70001, None).await.unwrap();
+        println!(
+            "{}: {} missing, {} queued, by season {:?}",
+            series.title,
+            series.missing(),
+            series.queued(),
+            series.missing_by_season()
+        );
+
+        let movie = client.movie_by_tmdb(542178).await.unwrap();
+        println!("{}: has file {}", movie.title, movie.has_file);
+
+        let result = client
+            .auto(&AutoRequest::series(series.tvdb_id, 0, vec![]))
+            .await
+            .unwrap();
+        println!("auto: {}", result.summary());
+
+        let err = client.request_action(1, "approve").await.unwrap_err();
+        println!("request action error: {err}");
     }
 }

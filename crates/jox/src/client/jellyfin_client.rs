@@ -1504,6 +1504,7 @@ mod tests {
                     port: "443".to_string(),
                     user_id: response.user.id,
                     access_token: response.access_token,
+                    roarr_url: String::new(),
                 };
                 let _ = JELLYFIN_CLIENT.init(&account).await;
             }
@@ -1558,6 +1559,7 @@ mod tests {
                     port: "8096".to_string(),
                     user_id: response.user.id,
                     access_token: response.access_token,
+                    roarr_url: String::new(),
                 };
                 let _ = JELLYFIN_CLIENT.init(&account).await;
             }

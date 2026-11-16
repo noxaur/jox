@@ -459,7 +459,7 @@ fn activity_row(item: &ActivityItem) -> gtk::ListBoxRow {
     }
 
     let progress = gtk::ProgressBar::builder()
-        .fraction((item.progress / 100.0).clamp(0.0, 1.0))
+        .fraction(item.progress.clamp(0.0, 1.0))
         .css_classes(["jox-progress"])
         .margin_top(4)
         .build();
