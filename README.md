@@ -1,5 +1,5 @@
 # tsukimi
-A simple third-party Jellyfin client for Linux.
+A simple third-party Jellyfin client for Linux and macOS.
 
 > We use wl-proxy for mpv gpu-next vo embedding, you can find the embedder [here](https://github.com/MutsumiUniverse/Mutsumi). We also made a local player [Fughetta](https://github.com/MutsumiUniverse/Fughetta) using this embedder.
 
@@ -72,6 +72,17 @@ sudo emerge --ask media-video/tsukimi
 
 ### Nix
 `tsukimi` is available in nixpkgs since 24.11.
+
+### macOS
+There is no packaged build yet; build from source with Homebrew:
+```bash
+brew install rust meson ninja just blueprint-compiler gtk4 libadwaita mpv gstreamer webp-pixbuf-loader
+just run
+```
+
+On macOS mpv renders through its OpenGL render API instead of the Wayland
+embedder, MPRIS is unavailable, and animated images show only their first frame.
+The first launch can take a minute while GStreamer builds its plugin registry.
 
 ## MPV Config
 [MPV-manual#files](https://mpv.io/manual/master/#files)

@@ -33,6 +33,9 @@ pub fn match_hwdec_interop<'a>(matcher: i32) -> &'a str {
     match matcher {
         0 => "no",
         1 => "auto-safe",
+        #[cfg(target_os = "macos")]
+        2 => "videotoolbox",
+        #[cfg(not(target_os = "macos"))]
         2 => "vaapi",
         _ => "no",
     }

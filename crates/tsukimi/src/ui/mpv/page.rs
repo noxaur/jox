@@ -120,7 +120,9 @@ mod imp {
         glib,
     };
 
+    #[cfg(target_os = "linux")]
     use mpris_server::LocalServer;
+    #[cfg(target_os = "linux")]
     use once_cell::sync::OnceCell;
 
     use super::MediaSourceFallback;
@@ -220,6 +222,7 @@ mod imp {
         pub popover_count: Cell<u32>,
         pub menu_actions: MenuActions,
 
+        #[cfg(target_os = "linux")]
         pub mpris_server: OnceCell<LocalServer<super::MPVPage>>,
 
         pub mpris_art_url: RefCell<Option<String>>,

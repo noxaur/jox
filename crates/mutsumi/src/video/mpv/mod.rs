@@ -1,17 +1,25 @@
 use std::ptr;
 
 mod actor;
+#[cfg(target_os = "linux")]
 mod area;
 mod contexted;
+#[cfg(not(target_os = "linux"))]
+mod gl_render;
 mod logging;
 mod paintable;
+#[cfg(target_os = "linux")]
 mod proxy;
+mod viewport;
 
 pub use actor::*;
+#[cfg(target_os = "linux")]
 pub use area::*;
 pub use contexted::*;
 pub use paintable::*;
+#[cfg(target_os = "linux")]
 pub use proxy::*;
+pub use viewport::*;
 
 use flume::{
     Receiver,
@@ -68,6 +76,7 @@ pub static RENDER_UPDATE: Lazy<RenderUpdate> = Lazy::new(|| {
     RenderUpdate { tx, rx }
 });
 
+#[cfg(not(target_os = "macos"))]
 fn epoxy_library() -> &'static libloading::Library {
     use std::sync::OnceLock;
 
@@ -90,6 +99,7 @@ fn epoxy_library() -> &'static libloading::Library {
     })
 }
 
+#[cfg(not(target_os = "macos"))]
 /// `epoxy_<name>` symbols are entries in libepoxy's dispatch table, not
 /// functions, so they must be dereferenced once to obtain the actual
 /// dispatcher for the currently bound GL context.
@@ -107,4 +117,14 @@ pub(crate) fn get_proc_address(name: &str) -> *const std::ffi::c_void {
             })
             .unwrap_or(ptr::null())
     }
+}
+
+/// GTK already links OpenGL.framework on macOS, so every GL entry point can be
+/// resolved from the global symbol namespace.
+#[cfg(target_os = "macos")]
+pub(crate) fn get_proc_address(name: &str) -> *const std::ffi::c_void {
+    let Ok(name) = std::ffi::CString::new(name) else {
+        return ptr::null();
+    };
+    unsafe { libc::dlsym(libc::RTLD_DEFAULT, name.as_ptr()) as *const _ }
 }

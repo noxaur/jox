@@ -1,3 +1,4 @@
+#[cfg(not(target_os = "macos"))]
 use super::epoxy_library;
 
 //This struct is actually noting, so it can be safely sent across threads without synchronization.
@@ -15,6 +16,7 @@ impl Default for ContextedMPV {
             };
             setlocale(LC_NUMERIC, c"C".as_ptr() as *const _);
         }
+        #[cfg(not(target_os = "macos"))]
         epoxy_library();
         Self {
             mpv: MpvActor::new(),
@@ -22,9 +24,10 @@ impl Default for ContextedMPV {
     }
 }
 
+#[cfg(target_os = "linux")]
+use crate::arm_mpv_proxy;
 use crate::{
     TrackSelection,
-    arm_mpv_proxy,
     video::{
         MpvActor,
         MpvValue,
@@ -105,6 +108,7 @@ impl ContextedMPV {
 
     pub fn load_video(&self, url: &str) {
         // mpv will read "WAYLAND_DISPLAY" everytime on loading file
+        #[cfg(target_os = "linux")]
         arm_mpv_proxy();
 
         self.mpv.command("loadfile", &[url, "replace"]);
@@ -117,6 +121,7 @@ impl ContextedMPV {
             return;
         }
 
+        #[cfg(target_os = "linux")]
         arm_mpv_proxy();
 
         let mut iter = urls.iter();
@@ -129,6 +134,7 @@ impl ContextedMPV {
     }
 
     pub fn set_playlist_pos(&self, pos: i64) {
+        #[cfg(target_os = "linux")]
         arm_mpv_proxy();
         self.mpv.set_property("playlist-pos", pos);
     }
@@ -150,6 +156,7 @@ impl ContextedMPV {
     }
 
     pub fn playlist_add(&self, url: &str, index: i64) {
+        #[cfg(target_os = "linux")]
         arm_mpv_proxy();
         self.mpv
             .command("loadfile", &[url, "insert-at", &index.to_string()]);

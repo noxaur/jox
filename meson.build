@@ -52,8 +52,13 @@ adw_min_version = run_command(
     check: true,
 ).stdout().strip()
 
+is_linux = host_machine.system() == 'linux'
+
 dependency('openssl', version: '>= 1.0')
-dependency('dbus-1')
+# MPRIS (D-Bus) and glycin are only used on Linux.
+if is_linux
+    dependency('dbus-1')
+endif
 
 dependency('glib-2.0', version: '>= 2.76')
 dependency('gio-2.0', version: '>= 2.76')
@@ -69,7 +74,9 @@ dependency(
 find_program('xmllint', required: false)
 dependency('epoxy')
 dependency('mpv', version: '>=0.38')
-dependency('glycin-2', version: '>=2.0')
+if is_linux
+    dependency('glycin-2', version: '>=2.0')
+endif
 
 dependency('gstreamer-1.0', version: '>= 1.16')
 dependency('gstreamer-base-1.0', version: '>= 1.16')

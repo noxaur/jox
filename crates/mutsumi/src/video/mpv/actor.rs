@@ -180,7 +180,12 @@ impl MpvActor {
             mpv.set_option("hwdec", "auto-safe")?;
             mpv.set_option("keep-open", "yes")?;
             mpv.set_option("auto-window-resize", "no")?;
+            // Elsewhere there is no Wayland compositor to proxy, so frames come
+            // from the render API instead (see `gl_render`).
+            #[cfg(target_os = "linux")]
             mpv.set_option("vo", "gpu-next")?;
+            #[cfg(not(target_os = "linux"))]
+            mpv.set_option("vo", "libmpv")?;
 
             if gdk_hdr_enabled() {
                 mpv.set_option("target-colorspace-hint", "no")?;

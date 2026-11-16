@@ -16,6 +16,10 @@ pub mod hortu_scrolled;
 pub mod hover_scale;
 pub mod identify;
 pub mod image_dialog;
+#[cfg(target_os = "linux")]
+pub mod image_paintable;
+#[cfg(not(target_os = "linux"))]
+#[path = "image_paintable_fallback.rs"]
 pub mod image_paintable;
 pub mod item;
 pub mod item_actionbox;

@@ -19,6 +19,7 @@ use crate::{
 use gtk::gdk;
 
 mod imp {
+    #[cfg(target_os = "linux")]
     use crate::{
         FRAME_CHANNEL,
         FrameCallbacks,
@@ -27,16 +28,25 @@ mod imp {
         SurfaceUpdate,
         create_mpv_proxy,
         gdk_hdr_enabled,
-        video::{
-            MutsumiMpvError,
-            mpv::contexted::ContextedMPV,
-        },
+    };
+    use crate::video::{
+        MutsumiMpvError,
+        mpv::contexted::ContextedMPV,
+    };
+    #[cfg(not(target_os = "linux"))]
+    use crate::video::{
+        MPV_CTRL,
+        MpvMessage,
+        RENDER_UPDATE,
+        VIEWPORT_CHANNEL,
+        mpv::gl_render::GlRenderer,
     };
     #[cfg(feature = "profiling")]
     use std::cell::Cell;
+    #[cfg(target_os = "linux")]
+    use std::os::fd::AsRawFd;
     use std::{
         cell::RefCell,
-        os::fd::AsRawFd,
         sync::OnceLock,
     };
 
@@ -49,8 +59,9 @@ mod imp {
     use super::*;
 
     use glib::subclass::Signal;
+    #[cfg(target_os = "linux")]
+    use gtk::gdk::ColorState;
     use gtk::{
-        gdk::ColorState,
         glib,
         prelude::*,
     };
@@ -59,7 +70,10 @@ mod imp {
     pub struct MutsumiVideoSink {
         pub mpv: ContextedMPV,
         pub texture: RefCell<Option<gdk::Texture>>,
+        #[cfg(target_os = "linux")]
         pub frame_callbacks: RefCell<Vec<FrameCallbacks>>,
+        #[cfg(not(target_os = "linux"))]
+        pub renderer: RefCell<Option<GlRenderer>>,
         #[cfg(feature = "profiling")]
         pub pending_snapshot_frame_id: Cell<Option<u64>>,
     }
@@ -75,9 +89,70 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
 
-            let obj = self.obj();
-
             self.setup_mpv();
+
+            #[cfg(target_os = "linux")]
+            self.receive_proxy_frames();
+            #[cfg(not(target_os = "linux"))]
+            self.drive_renderer();
+        }
+
+        fn dispose(&self) {
+            self.texture.take();
+            #[cfg(target_os = "linux")]
+            self.frame_callbacks.take();
+            // The render context has to go before mpv quits and frees its core.
+            #[cfg(not(target_os = "linux"))]
+            self.renderer.take();
+            self.mpv.shutdown();
+        }
+
+        fn signals() -> &'static [Signal] {
+            static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
+            SIGNALS.get_or_init(|| {
+                vec![
+                    Signal::builder("mutsumi-error")
+                        .param_types([glib::Type::I32])
+                        .build(),
+                ]
+            })
+        }
+    }
+
+    impl PaintableImpl for MutsumiVideoSink {
+        fn intrinsic_width(&self) -> i32 {
+            self.texture.borrow().as_ref().map_or(0, |t| t.width())
+        }
+
+        fn intrinsic_height(&self) -> i32 {
+            self.texture.borrow().as_ref().map_or(0, |t| t.height())
+        }
+
+        fn snapshot(&self, snapshot: &gdk::Snapshot, width: f64, height: f64) {
+            if let Some(texture) = self.texture.borrow().as_ref() {
+                snapshot.append_texture(
+                    texture,
+                    &gtk::graphene::Rect::new(0.0, 0.0, width as f32, height as f32),
+                );
+
+                #[cfg(feature = "profiling")]
+                profiling::mark(self.pending_snapshot_frame_id.take(), Stage::Snapshot);
+            }
+
+            #[cfg(target_os = "linux")]
+            {
+                let time_ms = (glib::monotonic_time() / 1_000) as u32;
+                for frame_callbacks in self.frame_callbacks.take() {
+                    frame_callbacks.done(time_ms);
+                }
+            }
+        }
+    }
+
+    impl MutsumiVideoSink {
+        #[cfg(target_os = "linux")]
+        fn receive_proxy_frames(&self) {
+            let obj = self.obj();
 
             let color_state = if gdk_hdr_enabled() {
                 Some(ColorState::rec2100_pq())
@@ -177,52 +252,7 @@ mod imp {
             ));
         }
 
-        fn dispose(&self) {
-            self.texture.take();
-            self.frame_callbacks.take();
-            self.mpv.shutdown();
-        }
-
-        fn signals() -> &'static [Signal] {
-            static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
-            SIGNALS.get_or_init(|| {
-                vec![
-                    Signal::builder("mutsumi-error")
-                        .param_types([glib::Type::I32])
-                        .build(),
-                ]
-            })
-        }
-    }
-
-    impl PaintableImpl for MutsumiVideoSink {
-        fn intrinsic_width(&self) -> i32 {
-            self.texture.borrow().as_ref().map_or(0, |t| t.width())
-        }
-
-        fn intrinsic_height(&self) -> i32 {
-            self.texture.borrow().as_ref().map_or(0, |t| t.height())
-        }
-
-        fn snapshot(&self, snapshot: &gdk::Snapshot, width: f64, height: f64) {
-            if let Some(texture) = self.texture.borrow().as_ref() {
-                snapshot.append_texture(
-                    texture,
-                    &gtk::graphene::Rect::new(0.0, 0.0, width as f32, height as f32),
-                );
-
-                #[cfg(feature = "profiling")]
-                profiling::mark(self.pending_snapshot_frame_id.take(), Stage::Snapshot);
-            }
-
-            let time_ms = (glib::monotonic_time() / 1_000) as u32;
-            for frame_callbacks in self.frame_callbacks.take() {
-                frame_callbacks.done(time_ms);
-            }
-        }
-    }
-
-    impl MutsumiVideoSink {
+        #[cfg(target_os = "linux")]
         fn setup_mpv(&self) {
             let display = gdk::Display::default().expect("Could not connect to display");
             let formats = display.dmabuf_formats();
@@ -245,6 +275,87 @@ mod imp {
                 .collect();
 
             create_mpv_proxy(format_pairs);
+        }
+
+        #[cfg(not(target_os = "linux"))]
+        fn setup_mpv(&self) {
+            // Blocking is fine: the actor answers straight away, and the render
+            // context must exist before the first loadfile or mpv's VO fails.
+            let (tx, rx) = tokio::sync::oneshot::channel();
+            if MPV_CTRL.tx.send(MpvMessage::InitRenderContext(tx)).is_err() {
+                self.throw_error(MutsumiMpvError::ContextNotInitialized);
+                return;
+            }
+            let Ok(mpv) = rx.blocking_recv() else {
+                self.throw_error(MutsumiMpvError::ContextNotInitialized);
+                return;
+            };
+
+            match GlRenderer::new(mpv) {
+                Ok(renderer) => {
+                    self.renderer.replace(Some(renderer));
+                }
+                Err(e) => {
+                    tracing::error!(target: "mutsumi::mpv", "OpenGL is unavailable: {e}");
+                    self.throw_error(MutsumiMpvError::ContextNotInitialized);
+                }
+            }
+        }
+
+        /// Redraws whenever mpv has a new frame or the widget changes size.
+        #[cfg(not(target_os = "linux"))]
+        fn drive_renderer(&self) {
+            let obj = self.obj();
+            let mut viewport_rx = VIEWPORT_CHANNEL.subscribe();
+
+            glib::spawn_future_local(glib::clone!(
+                #[weak]
+                obj,
+                async move {
+                    loop {
+                        let resized = tokio::select! {
+                            update = RENDER_UPDATE.rx.recv_async() => {
+                                if update.is_err() {
+                                    return;
+                                }
+                                false
+                            }
+                            changed = viewport_rx.changed() => {
+                                if changed.is_err() {
+                                    return;
+                                }
+                                true
+                            }
+                        };
+                        // Several updates may have queued while we were busy.
+                        let _ = RENDER_UPDATE.rx.drain();
+
+                        let Some(viewport) = *viewport_rx.borrow_and_update() else {
+                            continue;
+                        };
+
+                        let imp = obj.imp();
+                        let texture = {
+                            let mut renderer = imp.renderer.borrow_mut();
+                            let Some(renderer) = renderer.as_mut() else {
+                                return;
+                            };
+                            if !renderer.has_new_frame() && !resized {
+                                continue;
+                            }
+                            renderer.render(
+                                (viewport.width as f64 * viewport.scale).round() as i32,
+                                (viewport.height as f64 * viewport.scale).round() as i32,
+                            )
+                        };
+
+                        if let Some(texture) = texture {
+                            obj.replace_texture(Some(texture));
+                            obj.invalidate_contents();
+                        }
+                    }
+                }
+            ));
         }
 
         pub fn throw_error(&self, code: MutsumiMpvError) {
