@@ -105,6 +105,8 @@ mod imp {
             let window = crate::Window::new(&self.obj());
             window.load_window_state();
             window.present();
+            #[cfg(debug_assertions)]
+            crate::ui::widgets::dev_control::listen(&window);
         }
     }
 

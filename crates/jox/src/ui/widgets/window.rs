@@ -992,6 +992,20 @@ impl Window {
         }
     }
 
+    /// Selects a rail item and opens it, as a click does.
+    #[cfg(debug_assertions)]
+    pub fn activate_sidebar(&self, index: u32) {
+        self.imp().selectlist.set_selected(index);
+        self.on_sidebar_activated(index);
+    }
+
+    /// The search page, opened.
+    #[cfg(debug_assertions)]
+    pub fn open_search(&self) -> Option<SearchPage> {
+        self.searchpage();
+        self.imp().searchpage.child().and_downcast()
+    }
+
     #[template_callback]
     fn on_sidebar_activated(&self, index: u32) {
         let imp = self.imp();

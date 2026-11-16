@@ -164,6 +164,14 @@ impl SearchPage {
         Object::builder().build()
     }
 
+    /// Searches as if the text was typed and Enter pressed.
+    #[cfg(debug_assertions)]
+    pub fn search_for(&self, text: &str) {
+        let entry = &self.imp().searchentry;
+        entry.set_text(text);
+        entry.emit_activate();
+    }
+
     pub fn update(&self) {
         spawn(glib::clone!(
             #[weak(rename_to = obj)]

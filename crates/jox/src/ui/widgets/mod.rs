@@ -3,6 +3,8 @@ pub mod account_settings;
 pub mod action_row;
 pub mod check_row;
 pub mod content_viewer;
+#[cfg(debug_assertions)]
+pub mod dev_control;
 pub mod disc_box;
 pub mod episode_switcher;
 pub mod eu_item;
