@@ -52,4 +52,9 @@ if compile_schemas.found()
     )
 endif
 
+install_subdir(
+    'fonts',
+    install_dir: pkgdatadir,
+)
+
 subdir('icons')

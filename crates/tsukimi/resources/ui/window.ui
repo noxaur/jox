@@ -196,16 +196,31 @@
                                 <property name="title">Tsukimi</property>
                                 <property name="child">
                                   <object class="AdwToolbarView">
+                                    <style>
+                                      <class name="catwm-rail"/>
+                                    </style>
                                     <child type="top">
                                       <object class="AdwHeaderBar">
                                         <property name="show-start-title-buttons">false</property>
-                                        <child type="start">
+                                        <property name="title-widget">
+                                          <object class="AdwBin"/>
+                                        </property>
+                                        <child type="end">
                                           <object class="GtkToggleButton" id="backbutton">
                                             <property name="icon-name">system-log-out-symbolic</property>
                                             <property name="tooltip-text" translatable="yes">Log Out</property>
                                             <property name="action-name">win.relogin</property>
                                           </object>
                                         </child>
+                                      </object>
+                                    </child>
+                                    <child type="top">
+                                      <object class="GtkLabel">
+                                        <property name="label">tsukimi</property>
+                                        <property name="xalign">0</property>
+                                        <style>
+                                          <class name="catwm-wordmark"/>
+                                        </style>
                                       </object>
                                     </child>
                                     <child type="bottom">
@@ -247,19 +262,16 @@
                                             <child>
                                               <object class="AdwSidebarItem">
                                                 <property name="title" translatable="yes">Home</property>
-                                                <property name="icon-name">go-home-symbolic</property>
                                               </object>
                                             </child>
                                             <child>
                                               <object class="AdwSidebarItem">
                                                 <property name="title" translatable="yes">Liked</property>
-                                                <property name="icon-name">emote-love-symbolic</property>
                                               </object>
                                             </child>
                                             <child>
                                               <object class="AdwSidebarItem">
                                                 <property name="title" translatable="yes">Search</property>
-                                                <property name="icon-name">system-search-symbolic</property>
                                               </object>
                                             </child>
                                           </object>
@@ -321,6 +333,10 @@
                                     </child>
                                     <property name="content">
                                       <object class="GtkOverlay">
+                                        <property name="overflow">hidden</property>
+                                        <style>
+                                          <class name="catwm-pane"/>
+                                        </style>
                                         <child type="overlay">
                                           <object class="GtkProgressBar" id="progressbar">
                                             <property name="hexpand">True</property>

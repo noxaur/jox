@@ -94,7 +94,7 @@
                 <property name="valign">start</property>
                 <property name="focusable">False</property>
                 <child>
-                  <object class="AdwHeaderBar">
+                  <object class="AdwHeaderBar" id="top_headerbar">
                     <property name="show-start-title-buttons">false</property>
                     <property name="show-end-title-buttons">false</property>
                     <property name="title-widget">
@@ -201,7 +201,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkWindowControls">
+                          <object class="GtkWindowControls" id="window_controls">
                             <property name="side">end</property>
                             <style>
                               <class name="flat"/>

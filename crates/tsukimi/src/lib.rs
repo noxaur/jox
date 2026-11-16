@@ -6,6 +6,7 @@ use std::{
 mod app;
 mod arg;
 mod config;
+mod fonts;
 mod gstl;
 mod macros;
 
@@ -46,6 +47,7 @@ pub fn run() -> gtk::glib::ExitCode {
 
     textdomain(GETTEXT_PACKAGE).expect("Invalid string passed to textdomain");
 
+    fonts::register();
     adw::init().expect("Failed to initialize Adwaita");
     mutsumi::init();
 

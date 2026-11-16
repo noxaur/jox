@@ -500,7 +500,6 @@ impl Window {
         let accounts = SETTINGS.accounts();
         for account in accounts {
             let item = adw::SidebarItem::new(&account.servername);
-            item.set_icon_name(Some("network-server-symbolic"));
             imp.servers_section.append(item);
         }
     }

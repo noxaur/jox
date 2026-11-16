@@ -170,6 +170,10 @@ mod imp {
         #[template_child]
         pub top_revealer: TemplateChild<gtk::Revealer>,
         #[template_child]
+        pub top_headerbar: TemplateChild<adw::HeaderBar>,
+        #[template_child]
+        pub window_controls: TemplateChild<gtk::WindowControls>,
+        #[template_child]
         pub play_pause_image: TemplateChild<gtk::Image>,
         #[template_child]
         pub video_scale: TemplateChild<VideoScale>,
@@ -321,6 +325,14 @@ mod imp {
     impl ObjectImpl for MPVPage {
         fn constructed(&self) {
             self.parent_constructed();
+
+            // macOS keeps its own traffic lights over the video, so leave room
+            // for them on the left instead of drawing a second set on the right.
+            #[cfg(target_os = "macos")]
+            {
+                self.top_headerbar.set_show_start_title_buttons(true);
+                self.window_controls.set_visible(false);
+            }
 
             SETTINGS
                 .bind(

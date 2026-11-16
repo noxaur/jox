@@ -103,6 +103,7 @@ Thanks to open-source projects like GNOME Music, Fractal, and Clapper—we refer
 - [GTK4-RS](https://github.com/gtk-rs/gtk4-rs)
 - [MPV](https://github.com/mpv-player/mpv)
 - [Adwaita](https://gitlab.gnome.org/GNOME/libadwaita/)
+- [CatWM design system](https://github.com/noxaur/CatWM/blob/main/docs/design/design-system.md), with the Alpino and Pilcrow Rounded fonts from [Fontshare](https://www.fontshare.com) by Indian Type Foundry, used under the [ITF Free Font License](https://www.fontshare.com/terms)
 
 <sup>
 Fonts used in screenshots: <a href="https://github.com/lxgw/LxgwWenKai-Screen">LXGW WenKai Screen</a>
